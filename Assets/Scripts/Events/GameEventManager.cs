@@ -4,6 +4,7 @@ public class GameEventManager : MonoBehaviour
 {
     public static GameEventManager instance;
     public InputEvents inputEvents;
+    public MiscellaneousEvents miscellaneousEvents;
     
     private void Awake()
     {
@@ -13,5 +14,6 @@ public class GameEventManager : MonoBehaviour
         instance = this;
         
         inputEvents = new InputEvents();
+        miscellaneousEvents = new MiscellaneousEvents();
     }
 }

@@ -9,4 +9,10 @@ public class InputEvents
     {
         Move?.Invoke(context);
     }
+
+    public event Action<InputAction.CallbackContext> Run;
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        Run?.Invoke(context);
+    }
 }

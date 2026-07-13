@@ -7,4 +7,9 @@ public class InputManager : MonoBehaviour
     {
         GameEventManager.instance.inputEvents.OnMove(context);
     }
+
+    public void Run(InputAction.CallbackContext context)
+    {
+        GameEventManager.instance.inputEvents.OnRun(context);
+    }
 }

@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector3 = UnityEngine.Vector3;
@@ -6,31 +7,85 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Components")]
     private CharacterController _characterController;
+    private Animator _animator;
+    private PlayerStamina _playerStamina;
 
     private Vector2 _movementDirection;
-    public int movementSpeed;
+    public float movementSpeed;
+    public float runningSpeed;
+    private bool isRunning;
+    
+    // ##### DEBUG #####
+    [SerializeField] private int _spirits;
+    private Camera cam;
 
     private void Awake()
     {
-        TryGetComponent(out _characterController);
+        _characterController = GetComponent<CharacterController>();
+        _animator = GetComponentInChildren<Animator>();
+        _playerStamina = GetComponent<PlayerStamina>();
+        
+        cam = Camera.main;
     }
 
     private void Start()
     {
-        GameEventManager.instance.inputEvents.Move += MovePlayer;
+        // ##### DEBUG #####
+        Cursor.lockState = CursorLockMode.Locked;
+        
+        GameEventManager.instance.inputEvents.Move += Move;
+        GameEventManager.instance.inputEvents.Run += Run;
+        GameEventManager.instance.miscellaneousEvents.SpiritCollected += CollectSpirit;
     }
 
     private void Update()
     {
-        var translatedMovementDirection = new Vector3(_movementDirection.x, 0, _movementDirection.y) * movementSpeed;
-        _characterController.Move(translatedMovementDirection * Time.deltaTime);
+        // Move
+        UpdateMovement();
+        
+        // If running, consume stamina
+        if (isRunning) _playerStamina.ConsumeStamina();
+        
+        // If there is no more stamina, force walking
+        if (!_playerStamina.hasStamina)
+        {
+            isRunning = false;
+            _animator?.SetBool("isRunning", false);
+        }
+        
         if (_movementDirection == Vector2.zero) return;
-        transform.rotation = Quaternion.LookRotation(translatedMovementDirection);
+        UpdateRotation();
     }
 
-    private void MovePlayer(InputAction.CallbackContext context)
+    private void Move(InputAction.CallbackContext context)
+    {
+        _movementDirection = context.ReadValue<Vector2>();
+        if (context.started) _animator?.SetBool("isMoving", true);
+        if (context.canceled) _animator?.SetBool("isMoving", false);
+    }
+
+    private void UpdateRotation()
+    {
+        if (!cam) return;
+        var movementRotation = Mathf.Atan2(_movementDirection.x, _movementDirection.y) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
+        transform.rotation = Quaternion.Euler(Vector3.up * movementRotation);
+    }
+
+    private void UpdateMovement()
     {
         // Movement direction translated into 3 dimensions
-        _movementDirection = context.ReadValue<Vector2>();
+        var translatedMovementDirection = Quaternion.AngleAxis(cam.transform.eulerAngles.y, Vector3.up) *
+                                          new Vector3(_movementDirection.x, 0, _movementDirection.y) *
+                                          (isRunning ? runningSpeed : movementSpeed);
+        _characterController?.Move(translatedMovementDirection * Time.deltaTime);
     }
+
+    private void Run(InputAction.CallbackContext context)
+    {
+        isRunning = context.ReadValueAsButton();
+        if (context.started) _animator?.SetBool("isRunning", true);
+        if (context.canceled) _animator?.SetBool("isRunning", false);
+    }
+
+    private void CollectSpirit() => _spirits++;
 }
