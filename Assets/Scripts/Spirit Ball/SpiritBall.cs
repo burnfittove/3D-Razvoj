@@ -20,7 +20,9 @@ public class SpiritBall : MonoBehaviour
     {
         TryGetComponent(out MeshRenderer meshRenderer);
         TryGetComponent(out Collider collider);
+        TryGetComponent(out Light light);
         meshRenderer.enabled = false;
         collider.enabled = false;
+        light.enabled = false;
     }
 }

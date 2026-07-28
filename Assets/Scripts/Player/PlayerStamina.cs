@@ -7,12 +7,13 @@ public class PlayerStamina : MonoBehaviour
     public float staminaConsumptionRate;
     public float staminaRegenerationWaitTime;
     private float _waitTime;
-    [SerializeField] private float _stamina;
     public bool hasStamina;
+    public float Stamina { get; private set; }
+    public float MaxStamina => maxStamina;
 
     private void Start()
     {
-        _stamina = maxStamina;
+        Stamina = maxStamina;
         hasStamina = true;
         
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += RecoverStamina;
@@ -24,7 +25,7 @@ public class PlayerStamina : MonoBehaviour
         if (!hasStamina) return;
         
         // Consume stamina
-        _stamina -= staminaConsumptionRate * Time.deltaTime;
+        Stamina -= staminaConsumptionRate * Time.deltaTime;
         
         // Keep resetting the timer
         _waitTime = staminaRegenerationWaitTime;
@@ -33,25 +34,25 @@ public class PlayerStamina : MonoBehaviour
     private void RegenerateStamina()
     {
         if (_waitTime > 0) return;
-        if (_stamina >= maxStamina) return;
-        _stamina += staminaRegenerationRate * Time.deltaTime;
+        if (Stamina >= maxStamina) return;
+        Stamina += staminaRegenerationRate * Time.deltaTime;
     }
 
     private void Update()
     {
         // Check if the player has stamina
-        hasStamina = _stamina > 0;
+        hasStamina = Stamina > 0;
         
         // Recover stamina
         _waitTime -= Time.deltaTime;
         RegenerateStamina();
         
         // Clamp stamina
-        _stamina = Mathf.Clamp(_stamina, 0, maxStamina);
+        Stamina = Mathf.Clamp(Stamina, 0, maxStamina);
     }
 
     private void RecoverStamina()
     {
-        _stamina += 20;
+        Stamina += 20;
     }
 }

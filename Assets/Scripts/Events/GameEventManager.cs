@@ -8,9 +8,12 @@ public class GameEventManager : MonoBehaviour
     
     private void Awake()
     {
-        if (instance != null) return;
-        Debug.LogWarning("Multiple instances of GameEventManager");
-        Destroy(gameObject);
+        if (instance && instance != this)
+        {
+            Debug.LogWarning("Multiple instances of GameEventManager");
+            gameObject.SetActive(false);
+            return;
+        }
         instance = this;
         
         inputEvents = new InputEvents();
