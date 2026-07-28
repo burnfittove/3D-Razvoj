@@ -1501,6 +1501,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8113452787216287806, guid: 69d7a6b23f63f7f25998460d097cb8d8, type: 3}
   m_PrefabInstance: {fileID: 673918625}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &761234733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5956484669600784381, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
+  m_PrefabInstance: {fileID: 4843392955203855438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b072e7bbc7c609a8b15a00ca1714225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReaperController
 --- !u!4 &773312549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2900181429347551479, guid: 468d7c618fbba6421ac4d39fc9d9a3e8, type: 3}
@@ -5614,16 +5625,33 @@ PrefabInstance:
         UnityEngine.CoreModule]], mscorlib]]'
       objectReference: {fileID: 0}
     - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
+      propertyPath: 'managedReferences[2622644841217524690]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[DetectionController,
+        Assembly-CSharp]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
       propertyPath: managedReferences[2622644841217524062].Name
       value: PatrolPoints
       objectReference: {fileID: 0}
     - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
-      propertyPath: m_BlackboardVariableOverridesList.Array.size
-      value: 2
+      propertyPath: managedReferences[2622644841217524690].Name
+      value: Detector
       objectReference: {fileID: 0}
+    - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
+      propertyPath: m_BlackboardVariableOverridesList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
+      propertyPath: managedReferences[2622644841217524690].m_Value
+      value: 
+      objectReference: {fileID: 761234733}
     - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
       propertyPath: 'm_BlackboardVariableOverridesList.Array.data[1]'
       value: 2622644841217524062
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[2]'
+      value: 2622644841217524690
       objectReference: {fileID: 0}
     - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
       propertyPath: managedReferences[2622644841217524062].GUID.m_Value0
@@ -5632,6 +5660,14 @@ PrefabInstance:
     - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
       propertyPath: managedReferences[2622644841217524062].GUID.m_Value1
       value: 14283501479426252881
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
+      propertyPath: managedReferences[2622644841217524690].GUID.m_Value0
+      value: 1939261519859370228
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
+      propertyPath: managedReferences[2622644841217524690].GUID.m_Value1
+      value: 1594498544374769822
       objectReference: {fileID: 0}
     - target: {fileID: 3863822027251606450, guid: 8a537b33febd08c0fac4dc6298b1eaa7, type: 3}
       propertyPath: managedReferences[2622644841217524062].m_Value.Array.size
