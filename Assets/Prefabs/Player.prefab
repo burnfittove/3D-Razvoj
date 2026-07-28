@@ -72,8 +72,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df97010d75d6ed71e9b4b30f8a45f0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  movementSpeed: 1.25
-  runningSpeed: 2.5
+  movementSpeed: 2
+  runningSpeed: 3.5
   _spirits: 0
 --- !u!114 &7182292107909501714
 MonoBehaviour:
@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStamina
   maxStamina: 100
-  staminaRegenerationRate: 10
-  staminaConsumptionRate: 20
+  staminaRegenerationRate: 15
+  staminaConsumptionRate: 10
   staminaRegenerationWaitTime: 2
   hasStamina: 0
 --- !u!1001 &2862696210073994046
