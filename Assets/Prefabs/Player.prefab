@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStamina
   maxStamina: 100
-  staminaRegenerationRate: 15
-  staminaConsumptionRate: 10
+  staminaRegenerationRate: 10
+  staminaConsumptionRate: 13
   staminaRegenerationWaitTime: 2
   hasStamina: 0
 --- !u!1001 &2862696210073994046
