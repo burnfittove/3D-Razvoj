@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class TargetDetectionController : MonoBehaviour
@@ -6,13 +5,8 @@ public class TargetDetectionController : MonoBehaviour
     public Transform detectionAreaOrigin;
     public float detectionAreaRadius;
     public LayerMask targetMask;
-    private FindTarget _findTarget;
     public bool HasTarget;
-    
-    private void Awake()
-    {
-        _findTarget = GetComponent<FindTarget>();
-    }
+    public Vector3 _lastSeenPosition;
 
     private void Update()
     {
@@ -23,8 +17,13 @@ public class TargetDetectionController : MonoBehaviour
             HasTarget = false;
             return;
         }
-        _findTarget.SetTarget(colliders[0].transform);
+        _lastSeenPosition = colliders[0].transform.position;
         HasTarget = true;
+    }
+
+    public Vector3 GetTargetPosition()
+    {
+        return _lastSeenPosition;
     }
 
     private void OnDrawGizmos()

@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class FindTarget : MonoBehaviour
 {
-    [HideInInspector] public Vector3 targetPosition;
+    [HideInInspector] public GameObject targetObject;
 
-    public void SetTarget(Transform newTarget)
+    public void SetTarget(GameObject newTarget)
     {
-        if (!newTarget) targetPosition = Vector3.zero;
-        targetPosition = newTarget.position;
+        if (!newTarget) targetObject = null;
+        targetObject = newTarget;
+    }
+
+    public GameObject GetTarget()
+    {
+        return targetObject;
     }
 }
