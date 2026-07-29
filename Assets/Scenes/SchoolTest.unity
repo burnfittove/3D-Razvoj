@@ -124,6 +124,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 912159136745248703, guid: ba4866e40d4f121719aa8de246ab0d24, type: 3}
   m_PrefabInstance: {fileID: 1082949023}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &156385085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 156385086}
+  m_Layer: 0
+  m_Name: Detection Area Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &156385086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156385085}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 283938950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &217255128
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +215,8 @@ GameObject:
   - component: {fileID: 283938950}
   - component: {fileID: 283938951}
   - component: {fileID: 283938952}
+  - component: {fileID: 283938954}
+  - component: {fileID: 283938953}
   m_Layer: 0
   m_Name: Reaper
   m_TagString: Untagged
@@ -205,6 +238,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1423738778}
+  - {fileID: 156385086}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &283938951
@@ -245,6 +279,8 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 2622644864326828267
   - rid: 2622644864326828268
+  - rid: 2622644864326828400
+  - rid: 2622644864326828401
   m_OriginalGraph: {fileID: 0}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -271,6 +307,53 @@ MonoBehaviour:
         - {fileID: 1572291456}
         - {fileID: 1612204977}
         - {fileID: 1392162237}
+    - rid: 2622644864326828400
+      type: {class: 'BlackboardVariable`1[[FindTarget, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8798517851059799071
+          m_Value1: 15976865578806680682
+        Name: Find Target
+        m_Value: {fileID: 283938953}
+    - rid: 2622644864326828401
+      type: {class: 'BlackboardVariable`1[[TargetDetectionController, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8856188853376100505
+          m_Value1: 2165057243080597754
+        Name: Target Detection Controller
+        m_Value: {fileID: 283938954}
+--- !u!114 &283938953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283938946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca874a553cd2a1f08f02825eee22409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FindTarget
+  targetPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &283938954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283938946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b072e7bbc7c609a8b15a00ca1714225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TargetDetectionController
+  detectionAreaOrigin: {fileID: 156385086}
+  detectionAreaRadius: 2.62
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  HasTarget: 0
 --- !u!1001 &327322694
 PrefabInstance:
   m_ObjectHideFlags: 0

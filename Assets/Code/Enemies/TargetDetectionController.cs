@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TargetDetectionController : MonoBehaviour
@@ -6,6 +7,7 @@ public class TargetDetectionController : MonoBehaviour
     public float detectionAreaRadius;
     public LayerMask targetMask;
     private FindTarget _findTarget;
+    public bool HasTarget;
     
     private void Awake()
     {
@@ -16,7 +18,18 @@ public class TargetDetectionController : MonoBehaviour
     {
         var colliders = Physics.OverlapSphere(detectionAreaOrigin.position, detectionAreaRadius, targetMask);
 
-        if (colliders.Length <= 0 || !colliders[0]) return;
+        if (colliders.Length <= 0 || !colliders[0])
+        {
+            HasTarget = false;
+            return;
+        }
         _findTarget.SetTarget(colliders[0].transform);
+        HasTarget = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(detectionAreaOrigin.position, detectionAreaRadius);
     }
 }
