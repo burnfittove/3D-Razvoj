@@ -7,6 +7,7 @@ public class DoorSceneChange : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!GameEventManager.instance) return;
+        Debug.Log(sceneName);
         GameEventManager.instance.sceneEvents.OnSceneLoad(sceneName);
     }
 }
