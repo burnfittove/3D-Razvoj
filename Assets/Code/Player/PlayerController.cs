@@ -24,8 +24,7 @@ public class PlayerController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponentInChildren<Animator>();
         _playerStamina = GetComponent<PlayerStamina>();
-        
-        
+        UpdateCameraReference();
     }
 
     private void Start()
