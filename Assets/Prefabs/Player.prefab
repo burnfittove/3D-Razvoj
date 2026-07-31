@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6991647411462517861}
   - component: {fileID: 5367886619684784303}
   - component: {fileID: 7182292107909501714}
+  - component: {fileID: 8428302385123348561}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,6 +93,18 @@ MonoBehaviour:
   staminaConsumptionRate: 12
   staminaRegenerationWaitTime: 2
   hasStamina: 0
+--- !u!114 &8428302385123348561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428463841894070045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47572d3dfcb1af7ab174adc651947f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeepBetweenScenes
 --- !u!1001 &2862696210073994046
 PrefabInstance:
   m_ObjectHideFlags: 0

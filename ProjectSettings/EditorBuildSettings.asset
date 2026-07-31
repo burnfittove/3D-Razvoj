@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SchoolTest.unity
     guid: dc93ae897cf00c5e2a0a56799e57bbb3
   m_configObjects:
+    com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: 5c30511375dbeecfcbf0b0af40e98840, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 85505f79c4ee9d2a8bc3b792fa7c3592, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 4b86988b828abdfaa988c9f18a69257e, type: 2}
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

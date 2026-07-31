@@ -61,8 +61,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557473030043221151}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30984718, y: 0.5893897, z: -0.26133558, w: 0.6987978}
-  m_LocalPosition: {x: -2.0830271, y: 2.9262276, z: 2.6699903}
+  m_LocalRotation: {x: -0.17203155, y: -0.4077684, z: -0.07852903, w: 0.89328796}
+  m_LocalPosition: {x: 0.9565001, y: 0.07999998, z: 2.2095647}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 8909226904125748600}
   - component: {fileID: 3855376019076761451}
   - component: {fileID: 2046689583582014735}
+  - component: {fileID: 7814889416254893297}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: MainCamera
@@ -233,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7284691224098902876}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.06492481, y: -0.4142023, z: -0.029636899, w: 0.9073824}
+  m_LocalRotation: {x: -0.17203154, y: -0.4077684, z: -0.07852902, w: 0.8932879}
   m_LocalPosition: {x: 0.9565001, y: 0.07999998, z: 2.2095647}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -260,7 +261,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 912159136745248703, guid: ba4866e40d4f121719aa8de246ab0d24, type: 3}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -474,3 +475,15 @@ MonoBehaviour:
       m_Bits: 0
     MaximumRaycast: 1
     Damping: 0.5
+--- !u!114 &7814889416254893297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284691224098902876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cad101d5b2eb1c2b90d8fd8cbc532e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFindTarget

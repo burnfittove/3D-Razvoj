@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 709718833800584829}
   - component: {fileID: 779957431041069874}
   - component: {fileID: 8311109297197310142}
+  - component: {fileID: 8175123511722517935}
   m_Layer: 5
   m_Name: StaminaUI
   m_TagString: Untagged
@@ -390,3 +391,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8175123511722517935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9032613306407157525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47572d3dfcb1af7ab174adc651947f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeepBetweenScenes

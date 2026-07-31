@@ -25,17 +25,23 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _playerStamina = GetComponent<PlayerStamina>();
         
-        cam = Camera.main;
+        
     }
 
     private void Start()
     {
         // ##### DEBUG #####
         Cursor.lockState = CursorLockMode.Locked;
-        
+
+        if (!GameEventManager.instance)
+        {
+            Debug.LogError("No GameEventManager found in scene.");
+            return;
+        }
         GameEventManager.instance.inputEvents.Move += Move;
         GameEventManager.instance.inputEvents.Run += Run;
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += CollectSpirit;
+        GameEventManager.instance.sceneEvents.SceneLoaded += UpdateCameraReference;
     }
 
     private void Update()
@@ -88,4 +94,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void CollectSpirit() => _spirits++;
+
+    private void UpdateCameraReference()
+    {
+        cam = Camera.main;
+    }
 }
