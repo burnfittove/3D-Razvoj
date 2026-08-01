@@ -1,3 +1,4 @@
+using Code.Managers;
 using UnityEngine;
 
 public class DoorSceneChange : MonoBehaviour
@@ -7,10 +8,10 @@ public class DoorSceneChange : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(sceneName);
-        if (!GameEventManager.instance) return;
-        GameEventManager.instance.miscellaneousEvents.OnSceneLoadLocationSet(GetNextRoomLocation());
-        GameEventManager.instance.sceneEvents.OnSceneLoad(sceneName);
+        Debug.Log("Step 1");
+        if (!SceneChangeManager.instance) return;
+        SceneChangeManager.instance.AddObjectPosition(other.gameObject, GetNextRoomLocation());
+        SceneChangeManager.instance.LoadScene(sceneName);
     }
 
     private Vector3 GetNextRoomLocation()

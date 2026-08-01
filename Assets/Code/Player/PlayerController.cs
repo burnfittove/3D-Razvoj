@@ -1,6 +1,6 @@
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour
@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponentInChildren<Animator>();
         _playerStamina = GetComponent<PlayerStamina>();
-        UpdateCameraReference();
     }
 
     private void Start()
@@ -40,7 +39,9 @@ public class PlayerController : MonoBehaviour
         GameEventManager.instance.inputEvents.Move += Move;
         GameEventManager.instance.inputEvents.Run += Run;
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += CollectSpirit;
-        GameEventManager.instance.sceneEvents.SceneLoaded += UpdateCameraReference;
+        SceneManager.sceneLoaded += UpdateCameraReference;
+        
+        cam = Camera.main;
     }
 
     private void Update()
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     private void CollectSpirit() => _spirits++;
 
-    private void UpdateCameraReference()
+    private void UpdateCameraReference(Scene scene, LoadSceneMode mode)
     {
         cam = Camera.main;
     }
