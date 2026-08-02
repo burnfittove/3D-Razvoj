@@ -8,7 +8,6 @@ public class DoorSceneChange : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Step 1");
         if (!SceneChangeManager.instance) return;
         SceneChangeManager.instance.AddObjectPosition(other.gameObject, GetNextRoomLocation());
         SceneChangeManager.instance.LoadScene(sceneName);

@@ -32,29 +32,20 @@ namespace Code.Managers
             foreach (var keyValPair in _objectPositions)
             {
                 if (!keyValPair.Key) continue;  // Early return
-                if (keyValPair.Key.TryGetComponent(out CharacterController characterController))
-                {
-                    characterController.transform.position = keyValPair.Value;
-                    continue;
-                }
                 keyValPair.Key.transform.position = keyValPair.Value;   // Set the object's position
-                Debug.Log("Step 4");
             }
             
             _objectPositions.Clear();   // Clear the hash map (notice how i'm calling it a hash map because i'm really smart and know how to write code ⚞^. .^⚟)
-            Debug.Log("Step 5");
         }
 
         public void AddObjectPosition(GameObject gameObject, Vector3 position)
         {
-            Debug.Log("Step 2");
             _objectPositions.Add(gameObject, position);
         }
 
         public void LoadScene(string sceneName)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-            Debug.Log("Step 3");
+            SceneManager.LoadScene(sceneName);
         }
     }
 }
