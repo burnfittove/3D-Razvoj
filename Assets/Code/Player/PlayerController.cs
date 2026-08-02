@@ -85,9 +85,9 @@ public class PlayerController : MonoBehaviour
     private void UpdateMovement()
     {
         // Movement direction translated into 3 dimensions
-        var translatedMovementDirection = Quaternion.AngleAxis(cam.transform.eulerAngles.y, Vector3.up) *
-                                          new Vector3(_movementDirection.x, 0, _movementDirection.y) *
-                                          (isRunning ? runningSpeed : movementSpeed);
+        var translatedMovementDirection = Quaternion.AngleAxis(cam.transform.eulerAngles.y, Vector3.up) *   // Movement direction relative to the camera...
+                                          new Vector3(_movementDirection.x, 0, _movementDirection.y) *              // then multiply with the given input...
+                                          (isRunning ? runningSpeed : movementSpeed);                               // then decide which speed to use.
         _rb?.MovePosition(_rb.position + translatedMovementDirection * Time.deltaTime);
     }
 
