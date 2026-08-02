@@ -1922,7 +1922,7 @@ PrefabInstance:
       objectReference: {fileID: 314591195}
     - target: {fileID: 4148787837936124175, guid: a0f8a75656e16448894479a66893ee25, type: 3}
       propertyPath: m_Name
-      value: Spirit 1
+      value: Spirit
       objectReference: {fileID: 0}
     - target: {fileID: 6263768631047117306, guid: a0f8a75656e16448894479a66893ee25, type: 3}
       propertyPath: m_Mesh
@@ -2769,7 +2769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4148787837936124175, guid: a0f8a75656e16448894479a66893ee25, type: 3}
       propertyPath: m_Name
-      value: Spirit 2
+      value: Spirit
       objectReference: {fileID: 0}
     - target: {fileID: 7194904821715478813, guid: a0f8a75656e16448894479a66893ee25, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,12 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SpiritManager : MonoBehaviour
 {
     public static SpiritManager instance;
-    private readonly Dictionary<GameObject, bool> spiritStates = new Dictionary<GameObject, bool>();
+    private readonly Dictionary<string, bool> spiritStates = new();
+    public List<string> spiritPrefabs;
 
     private void Awake()
     {
@@ -20,24 +19,23 @@ public class SpiritManager : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
+    public bool IsSpiritActive(string spiritId)
     {
-        // spiritStates.ToList().ForEach(obj => Debug.Log($"{obj.Key.gameObject.name}: {obj.Value}"));
+        return spiritStates.ContainsKey(spiritId) && spiritStates[spiritId];
     }
 
-    public bool IsSpiritActive(GameObject gameObject)
+    public void AddSpirit(string spiritId)
     {
-        return spiritStates.ContainsKey(gameObject);
+        // spiritStates.TryAdd(gameObject, true);  // If a spirit is already in the hash map, the method will fail and the key value pair will not be affected.
+        if (spiritStates.TryAdd(spiritId, true))
+        {
+            spiritPrefabs.Add(spiritId);
+        }
     }
 
-    public void AddSpirit(GameObject gameObject)
+    public void UpdateSpirit(string spiritId, bool newState)
     {
-        spiritStates.TryAdd(gameObject, true);  // If a spirit is already in the hash map, the method will fail and the key value pair will not be affected.
-    }
-
-    public void UpdateSpirit(GameObject gameObject, bool newState)
-    {
-        if (!spiritStates.ContainsKey(gameObject)) return;
-        spiritStates[gameObject] = newState;
+        if (!spiritStates.ContainsKey(spiritId)) return;
+        spiritStates[spiritId] = newState;
     }
 }
