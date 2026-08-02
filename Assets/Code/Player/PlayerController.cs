@@ -1,12 +1,13 @@
-using Unity.Cinemachine;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Components")]
-    private CharacterController _characterController;
+    private Rigidbody _rb;
     private Animator _animator;
     private PlayerStamina _playerStamina;
 
@@ -21,10 +22,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _characterController = GetComponent<CharacterController>();
+        _rb = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
         _playerStamina = GetComponent<PlayerStamina>();
-        UpdateCameraReference();
     }
 
     private void Start()
@@ -40,14 +40,13 @@ public class PlayerController : MonoBehaviour
         GameEventManager.instance.inputEvents.Move += Move;
         GameEventManager.instance.inputEvents.Run += Run;
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += CollectSpirit;
-        GameEventManager.instance.sceneEvents.SceneLoaded += UpdateCameraReference;
+        SceneManager.sceneLoaded += UpdateCameraReference;
+        
+        cam = Camera.main;
     }
 
     private void Update()
     {
-        // Move
-        UpdateMovement();
-        
         // If running, consume stamina
         if (isRunning) _playerStamina.ConsumeStamina();
         
@@ -57,6 +56,12 @@ public class PlayerController : MonoBehaviour
             isRunning = false;
             _animator?.SetBool("isRunning", false);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        // Move
+        UpdateMovement();
         
         if (_movementDirection == Vector2.zero) return;
         UpdateRotation();
@@ -73,16 +78,17 @@ public class PlayerController : MonoBehaviour
     {
         if (!cam) return;
         var movementRotation = Mathf.Atan2(_movementDirection.x, _movementDirection.y) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-        transform.rotation = Quaternion.Euler(Vector3.up * movementRotation);
+        // transform.rotation = Quaternion.Euler(Vector3.up * movementRotation);
+        _rb.MoveRotation(Quaternion.Euler(Vector3.up * movementRotation));
     }
 
     private void UpdateMovement()
     {
         // Movement direction translated into 3 dimensions
-        var translatedMovementDirection = Quaternion.AngleAxis(cam.transform.eulerAngles.y, Vector3.up) *
-                                          new Vector3(_movementDirection.x, 0, _movementDirection.y) *
-                                          (isRunning ? runningSpeed : movementSpeed);
-        _characterController?.Move(translatedMovementDirection * Time.deltaTime);
+        var translatedMovementDirection = Quaternion.AngleAxis(cam.transform.eulerAngles.y, Vector3.up) *   // Movement direction relative to the camera...
+                                          new Vector3(_movementDirection.x, 0, _movementDirection.y) *              // then multiply with the given input...
+                                          (isRunning ? runningSpeed : movementSpeed);                               // then decide which speed to use.
+        _rb?.MovePosition(_rb.position + translatedMovementDirection * Time.deltaTime);
     }
 
     private void Run(InputAction.CallbackContext context)
@@ -94,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private void CollectSpirit() => _spirits++;
 
-    private void UpdateCameraReference()
+    private void UpdateCameraReference(Scene scene, LoadSceneMode mode)
     {
         cam = Camera.main;
     }
