@@ -22,7 +22,7 @@ public class SpiritBall : MonoBehaviour
         // Early return
         if (!SpiritManager.instance)
         {
-            Debug.LogWarning($"{gameObject.name}: No instance of SpiritBall found in the scene.");
+            Debug.LogWarning($"{gameObject.name}: No instance of SpiritManager found in the scene.");
             return;
         }
         
