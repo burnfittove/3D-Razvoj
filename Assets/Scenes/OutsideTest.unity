@@ -897,6 +897,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2262998028485773820, guid: cb68f8ce1963475bf8f1aa9f221e30fa, type: 3}
+      propertyPath: sceneName
+      value: School Entrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262998028485773820, guid: cb68f8ce1963475bf8f1aa9f221e30fa, type: 3}
       propertyPath: nextRoomEnterLocation
       value: 
       objectReference: {fileID: 1958749648}
@@ -1167,7 +1171,7 @@ Transform:
   m_GameObject: {fileID: 1958749647}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.86602443, z: -0, w: 0.5000017}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
