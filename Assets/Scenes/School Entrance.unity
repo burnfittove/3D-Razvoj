@@ -1232,10 +1232,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Post Processing
       objectReference: {fileID: 0}
-    - target: {fileID: 3526886068399681437, guid: c8ac7ac18577318e18fe88a0c2caeef5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3986644157374459861, guid: c8ac7ac18577318e18fe88a0c2caeef5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -119,9 +119,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Shade_Intensity: 1
+    - _Shade_Intensity: 2
     - _Shade_Intesity: 0.25
-    - _Shade_Length: 0.87
+    - _Shade_Length: 0.5
     - _Shade_Size: 2.85
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
