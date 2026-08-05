@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 71e6f39659c348b93a4d1bb3fbd71496
+guid: 73dc117f0fccbedd9ba6145891efb5f9
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -50,7 +50,7 @@ ModelImporter:
       takeName: Body|Chasing
       internalID: 4961976276993127316
       firstFrame: 0
-      lastFrame: 71
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -108,7 +108,7 @@ ModelImporter:
       takeName: Scythe|Chasing
       internalID: -7114922211232053859
       firstFrame: 0
-      lastFrame: 71
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
