@@ -863,6 +863,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8341474105152579508, guid: f3fd2c5fb2df0abe0a884f7feb10fbb0, type: 3}
   m_PrefabInstance: {fileID: 247027146}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &296120155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296120156}
+  m_Layer: 0
+  m_Name: Right Staircase Second Floor Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &296120156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296120155}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 36, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &354912523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -995,6 +1026,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 679134807}
     m_Modifications:
+    - target: {fileID: 2170509080693492705, guid: e885e6ea98037e0118fdea650baf35c0, type: 3}
+      propertyPath: sceneName
+      value: Second Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170509080693492705, guid: e885e6ea98037e0118fdea650baf35c0, type: 3}
+      propertyPath: nextRoomEnterLocation
+      value: 
+      objectReference: {fileID: 296120156}
     - target: {fileID: 3331206357990024976, guid: e885e6ea98037e0118fdea650baf35c0, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -2854,6 +2893,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 679134807}
     m_Modifications:
+    - target: {fileID: 2170509080693492705, guid: e885e6ea98037e0118fdea650baf35c0, type: 3}
+      propertyPath: sceneName
+      value: Second Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 3331206357990024976, guid: e885e6ea98037e0118fdea650baf35c0, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -3984,3 +4027,4 @@ SceneRoots:
   - {fileID: 2015046220}
   - {fileID: 624570753}
   - {fileID: 1218627713434046184}
+  - {fileID: 296120156}
