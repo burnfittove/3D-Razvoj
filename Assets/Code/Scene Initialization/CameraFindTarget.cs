@@ -9,7 +9,7 @@ public class CameraFindTarget : MonoBehaviour
     {
         _camera = GetComponent<CinemachineCamera>();
         
-        if (_camera.Target.TrackingTarget) return;  // If there is already a defined target, return
+        // if (_camera.Target.TrackingTarget) return;  // If there is already a defined target, return
         var _player = GameObject.FindGameObjectWithTag("Player");
         if (!_player)
         {
