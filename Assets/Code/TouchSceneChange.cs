@@ -1,6 +1,5 @@
 using Code.Managers;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TouchSceneChange : MonoBehaviour
 {

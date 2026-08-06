@@ -7,8 +7,10 @@ namespace Code.Managers
 {
     public class SceneChangeManager : MonoBehaviour
     {
-        private Dictionary<GameObject, Vector3> _objectPositions = new Dictionary<GameObject, Vector3>();
+        private Dictionary<GameObject, Vector3> _objectPositions = new();
         public static SceneChangeManager instance;
+        public Animator animator;
+        private string _sceneNameBuffer;
 
         private void Awake()
         {
@@ -36,6 +38,8 @@ namespace Code.Managers
             }
             
             _objectPositions.Clear();   // Clear the hash map (notice how i'm calling it a hash map because i'm really smart and know how to write code ⚞^. .^⚟)
+
+            animator.SetTrigger("FadeOut");
         }
 
         public void AddObjectPosition(GameObject gameObject, Vector3 position)
@@ -45,7 +49,9 @@ namespace Code.Managers
 
         public void LoadScene(string sceneName)
         {
-            SceneManager.LoadScene(sceneName);
+            _sceneNameBuffer = sceneName;
+            Time.timeScale = 0;
+            animator.SetTrigger("FadeIn");
         }
     }
 }
