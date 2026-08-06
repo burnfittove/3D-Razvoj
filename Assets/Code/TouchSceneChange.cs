@@ -2,13 +2,14 @@ using Code.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DoorSceneChange : MonoBehaviour
+public class TouchSceneChange : MonoBehaviour
 {
     public string sceneName;
     public Transform nextRoomEnterLocation;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (sceneName == string.Empty) return;
         if (!SceneChangeManager.instance) return;
         SceneChangeManager.instance.AddObjectPosition(other.gameObject, GetNextRoomLocation());
         SceneChangeManager.instance.LoadScene(sceneName);

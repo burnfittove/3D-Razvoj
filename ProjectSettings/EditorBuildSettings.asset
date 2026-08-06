@@ -9,29 +9,35 @@ EditorBuildSettings:
     path: Assets/Scenes/OutsideTest.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Classroom-1.unity
+    path: Assets/Scenes/Second Floor/floor-2-classroom-1.unity
     guid: 7276bbbe49194814b967649a7b7fefa6
   - enabled: 1
     path: Assets/Scenes/SchoolTest.unity
     guid: dc93ae897cf00c5e2a0a56799e57bbb3
   - enabled: 1
-    path: Assets/Scenes/Classroom-2.unity
+    path: Assets/Scenes/Second Floor/floor-2-classroom-2.unity
     guid: f30630e08e2322b1ea7845ac526ee202
   - enabled: 1
-    path: Assets/Scenes/School Entrance.unity
+    path: Assets/Scenes/First Floor/School Entrance.unity
     guid: 8656c0e770953189e8d147b9e8b74542
   - enabled: 1
-    path: Assets/Scenes/Janitors Closet.unity
+    path: Assets/Scenes/First Floor/Janitors Closet.unity
     guid: 3fd1fcc2ceeabe6db9158a9ba294f101
   - enabled: 1
-    path: Assets/Scenes/Gardeners Closet.unity
+    path: Assets/Scenes/First Floor/Gardeners Closet.unity
     guid: 455d1d08dbcf8750eb73f6efea659cb7
   - enabled: 1
-    path: Assets/Scenes/Second Floor.unity
+    path: Assets/Scenes/Second Floor/Second Floor.unity
     guid: 21fbc478b5cb815909b3a0918b6750e2
   - enabled: 1
-    path: Assets/Scenes/Staff Office.unity
+    path: Assets/Scenes/Second Floor/Staff Office.unity
     guid: 88e4a48479a0e175a85b4cc56a67d6e6
+  - enabled: 1
+    path: Assets/Scenes/Second Floor/floor-2-classroom-3.unity
+    guid: 7f1189a1d9e473980b3a2c5b74388a87
+  - enabled: 1
+    path: Assets/Scenes/Second Floor/floor-2-misc-1.unity
+    guid: 4bc06afa68119819c8e9f5193b36a6c2
   m_configObjects:
     com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: 5c30511375dbeecfcbf0b0af40e98840, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 85505f79c4ee9d2a8bc3b792fa7c3592, type: 2}
