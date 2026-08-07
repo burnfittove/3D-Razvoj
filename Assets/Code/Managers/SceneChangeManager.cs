@@ -9,7 +9,6 @@ namespace Code.Managers
     {
         private Dictionary<GameObject, Vector3> _objectPositions = new();
         public static SceneChangeManager instance;
-        public Animator animator;
         private string _sceneNameBuffer;
 
         private void Awake()
@@ -27,6 +26,9 @@ namespace Code.Managers
         private void Start()
         {
             SceneManager.sceneLoaded += SetObjectPositions;
+            
+            if (!GameEventManager.instance) return;
+            GameEventManager.instance.sceneEvents.OnFadeInCompleted += FinalLoadScene;
         }
 
         private void SetObjectPositions(Scene scene, LoadSceneMode mode)
@@ -38,8 +40,6 @@ namespace Code.Managers
             }
             
             _objectPositions.Clear();   // Clear the hash map (notice how i'm calling it a hash map because i'm really smart and know how to write code ⚞^. .^⚟)
-
-            animator.SetTrigger("FadeOut");
         }
 
         public void AddObjectPosition(GameObject gameObject, Vector3 position)
@@ -49,9 +49,14 @@ namespace Code.Managers
 
         public void LoadScene(string sceneName)
         {
-            _sceneNameBuffer = sceneName;
-            Time.timeScale = 0;
-            animator.SetTrigger("FadeIn");
+            if (!GameEventManager.instance) return; // If there's no GameEventManager, don't even try to change scenes
+            _sceneNameBuffer = sceneName;   // Cache scene name
+            GameEventManager.instance.sceneEvents.TransitionStarted();  // Start a fade in
+        }
+
+        private async void FinalLoadScene()
+        {
+            await SceneManager.LoadSceneAsync(_sceneNameBuffer);
         }
     }
 }

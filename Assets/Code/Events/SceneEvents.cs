@@ -9,15 +9,21 @@ public class SceneEvents
         OnSceneLoad?.Invoke(sceneName);
     }
     
-    public event Action OnFadeOut;
-    public void FadeOut()
+    public event Action OnTransitionStarted;
+    public void TransitionStarted()
     {
-        OnFadeOut?.Invoke();
+        OnTransitionStarted?.Invoke();
     }
     
-    public event Action OnFadeIn;
-    public void FadeIn()
+    public event Action OnTransitionCompleted;
+    public void TransitionCompleted()
     {
-        OnFadeIn?.Invoke();
+        OnTransitionCompleted?.Invoke();
+    }
+    
+    public event Action OnFadeInCompleted;
+    public void FadeInCompleted()
+    {
+        OnFadeInCompleted?.Invoke();
     }
 }

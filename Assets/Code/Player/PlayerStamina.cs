@@ -10,13 +10,18 @@ public class PlayerStamina : MonoBehaviour
     public bool hasStamina;
     public float Stamina { get; private set; }
     public float MaxStamina => maxStamina;
+    private bool _isEnabled;
 
     private void Start()
     {
         Stamina = maxStamina;
         hasStamina = true;
+        _isEnabled = true;
         
+        if (!GameEventManager.instance) return;
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += RecoverStamina;
+        GameEventManager.instance.sceneEvents.OnTransitionStarted += TransitionStarted;
+        GameEventManager.instance.sceneEvents.OnTransitionCompleted += TransitionFinished;
     }
 
     public void ConsumeStamina()
@@ -40,6 +45,8 @@ public class PlayerStamina : MonoBehaviour
 
     private void Update()
     {
+        if (!_isEnabled) return;
+        
         // Check if the player has stamina
         hasStamina = Stamina > 0;
         
@@ -54,5 +61,15 @@ public class PlayerStamina : MonoBehaviour
     private void RecoverStamina()
     {
         Stamina += 20;
+    }
+
+    private void TransitionStarted()
+    {
+        _isEnabled = false;
+    }
+
+    private void TransitionFinished()
+    {
+        _isEnabled = true;
     }
 }
