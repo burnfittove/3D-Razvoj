@@ -7,8 +7,9 @@ namespace Code.Managers
 {
     public class SceneChangeManager : MonoBehaviour
     {
-        private Dictionary<GameObject, Vector3> _objectPositions = new Dictionary<GameObject, Vector3>();
+        private Dictionary<GameObject, Vector3> _objectPositions = new();
         public static SceneChangeManager instance;
+        private string _sceneNameBuffer;
 
         private void Awake()
         {
@@ -25,6 +26,9 @@ namespace Code.Managers
         private void Start()
         {
             SceneManager.sceneLoaded += SetObjectPositions;
+            
+            if (!GameEventManager.instance) return;
+            GameEventManager.instance.sceneEvents.OnFadeInCompleted += FinalLoadScene;
         }
 
         private void SetObjectPositions(Scene scene, LoadSceneMode mode)
@@ -45,7 +49,14 @@ namespace Code.Managers
 
         public void LoadScene(string sceneName)
         {
-            SceneManager.LoadScene(sceneName);
+            if (!GameEventManager.instance) return; // If there's no GameEventManager, don't even try to change scenes
+            _sceneNameBuffer = sceneName;   // Cache scene name
+            GameEventManager.instance.sceneEvents.TransitionStarted();  // Start a fade in
+        }
+
+        private async void FinalLoadScene()
+        {
+            await SceneManager.LoadSceneAsync(_sceneNameBuffer);
         }
     }
 }

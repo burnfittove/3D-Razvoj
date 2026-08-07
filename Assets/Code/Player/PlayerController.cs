@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
     public float runningSpeed;
     private bool isRunning;
+    private bool _isEnabled;
     
     // ##### DEBUG #####
     [SerializeField] private int _spirits;
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
     {
         // ##### DEBUG #####
         Cursor.lockState = CursorLockMode.Locked;
+        
+        _isEnabled = true;
 
         if (!GameEventManager.instance)
         {
@@ -40,6 +43,8 @@ public class PlayerController : MonoBehaviour
         GameEventManager.instance.inputEvents.Move += Move;
         GameEventManager.instance.inputEvents.Run += Run;
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += CollectSpirit;
+        GameEventManager.instance.sceneEvents.OnTransitionStarted += TransitionStarted;
+        GameEventManager.instance.sceneEvents.OnTransitionCompleted += TransitionCompleted;
         SceneManager.sceneLoaded += UpdateCameraReference;
         
         cam = Camera.main;
@@ -47,19 +52,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!_isEnabled) return;
+        
         // If running, consume stamina
-        if (isRunning) _playerStamina.ConsumeStamina();
+        if (isRunning && _movementDirection != Vector2.zero) _playerStamina.ConsumeStamina();
         
         // If there is no more stamina, force walking
-        if (!_playerStamina.hasStamina)
-        {
-            isRunning = false;
-            _animator?.SetBool("isRunning", false);
-        }
+        if (_playerStamina.hasStamina) return;
+        isRunning = false;
+        _animator?.SetBool("isRunning", false);
     }
 
     private void FixedUpdate()
     {
+        if (!_isEnabled) return;
+        
         // Move
         UpdateMovement();
         
@@ -100,8 +107,17 @@ public class PlayerController : MonoBehaviour
 
     private void CollectSpirit() => _spirits++;
 
-    private void UpdateCameraReference(Scene scene, LoadSceneMode mode)
+    private void UpdateCameraReference(Scene scene, LoadSceneMode mode) => cam = Camera.main;
+
+    private void TransitionStarted()
     {
-        cam = Camera.main;
+        _isEnabled = false;
+        _animator.speed = 0;
+    }
+
+    private void TransitionCompleted()
+    {
+        _isEnabled = true; 
+        _animator.speed = 1;
     }
 }
