@@ -12,12 +12,14 @@ public abstract class HealthComponent : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        if (_currentHealth <= 0) return;
         _currentHealth -= damage;
         Die();
     }
     
     public virtual void Heal(float heal)
     {
+        if (_currentHealth >= maxHealth) return;
         _currentHealth += heal;
     }
 
