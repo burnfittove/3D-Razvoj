@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7100086089426552859}
   - component: {fileID: 3682231020374735102}
   - component: {fileID: 2947560299148998126}
+  - component: {fileID: 8466032125953273135}
+  - component: {fileID: 2454994114747813003}
   m_Layer: 0
   m_Name: Reaper
   m_TagString: Untagged
@@ -37,6 +39,7 @@ Transform:
   - {fileID: 8222710587741633208}
   - {fileID: 5277469408415466076}
   - {fileID: 7362923794631847907}
+  - {fileID: 6301640697023437700}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1595111643744923432
@@ -80,6 +83,9 @@ MonoBehaviour:
   - rid: 2622644864326828401
   - rid: 6058482872175821506
   - rid: 6058482872892522766
+  - rid: 6058482983637352683
+  - rid: 6058482983637353262
+  - rid: 6058482983637353263
   m_OriginalGraph: {fileID: 0}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -130,6 +136,30 @@ MonoBehaviour:
           m_Value1: 10977630042664487829
         Name: Animator
         m_Value: {fileID: 7599657583995990331}
+    - rid: 6058482983637352683
+      type: {class: 'BlackboardVariable`1[[TargetDetectionController, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7195458286806538270
+          m_Value1: 17983384441429493174
+        Name: Attack Target Detection Controller
+        m_Value: {fileID: 8466032125953273135}
+    - rid: 6058482983637353262
+      type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16854290884649063396
+          m_Value1: 3137481155493706810
+        Name: Attack
+        m_Value: Attack
+    - rid: 6058482983637353263
+      type: {class: 'BlackboardVariable`1[[ReaperController, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11759168840704477843
+          m_Value1: 7215842947172231533
+        Name: Reaper Controller
+        m_Value: {fileID: 2454994114747813003}
 --- !u!114 &3682231020374735102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,12 +173,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetDetectionController
   detectionAreaOrigin: {fileID: 8222710587741633208}
-  detectionAreaRadius: 2.62
+  detectionAreaRadius: 4
   targetMask:
     serializedVersion: 2
     m_Bits: 64
   HasTarget: 0
   _lastSeenPosition: {x: 0, y: 0, z: 0}
+  foundTarget: {fileID: 0}
 --- !u!114 &2947560299148998126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +193,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FindTarget
   targetObject: {fileID: 0}
+--- !u!114 &8466032125953273135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982769573155373037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b072e7bbc7c609a8b15a00ca1714225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TargetDetectionController
+  detectionAreaOrigin: {fileID: 6301640697023437700}
+  detectionAreaRadius: 1.2
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
+  HasTarget: 0
+  _lastSeenPosition: {x: 0, y: 0, z: 0}
+  foundTarget: {fileID: 0}
+--- !u!114 &2454994114747813003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982769573155373037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa397ddca6d9348359adadcd65f66a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReaperController
+  damage: 6
 --- !u!1 &1723462426510305012
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +297,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3212771976670486762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6301640697023437700}
+  m_Layer: 0
+  m_Name: Attack Area Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6301640697023437700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3212771976670486762}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 138123813939972236}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3839907326775074824
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +471,7 @@ Transform:
   m_GameObject: {fileID: 6031499413872195397}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 2}
+  m_LocalPosition: {x: 0, y: 1.5, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

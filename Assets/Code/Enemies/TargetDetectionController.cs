@@ -7,6 +7,7 @@ public class TargetDetectionController : MonoBehaviour
     public LayerMask targetMask;
     public bool HasTarget;
     public Vector3 _lastSeenPosition;
+    public GameObject foundTarget;
 
     private void Update()
     {
@@ -17,6 +18,7 @@ public class TargetDetectionController : MonoBehaviour
             HasTarget = false;
             return;
         }
+        foundTarget = colliders[0].gameObject;
         _lastSeenPosition = colliders[0].transform.position;
         HasTarget = true;
     }

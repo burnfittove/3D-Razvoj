@@ -47,6 +47,7 @@ public class PlayerHealthComponent : HealthComponent
         base.TakeDamage(damage);
         VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, _currentHealth));   // Calculate the current health state and pass it to the VignetteController
         _cooldownBuffer = regenerationCooldown;
+        Debug.Log(_currentHealth);
     }
 
     public override void Heal(float healAmount)
