@@ -27,25 +27,11 @@ public class PlayerHealthComponent : HealthComponent
 
     private void Update()
     {
-        
-        // ### DEBUG ###
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            TakeDamage(1);
-            Debug.Log($"Max Health: {maxHealth}\t\t| Current Health: {_currentHealth}");
-        }
-        
-        if (Mouse.current.rightButton.wasPressedThisFrame)
-        {
-            Heal(1);
-            Debug.Log($"Max Health: {maxHealth}\t\t| Current Health: {_currentHealth}");
-        }
         _cooldownBuffer -= Time.deltaTime;
 
         if (_cooldownBuffer > 0) return;
         Heal(regenerationRate * Time.deltaTime);
         _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
-        Debug.Log($"Max Health: {maxHealth}\t\t| Current Health: {_currentHealth}");
     }
 
     public HealthState CalculateHealthState(float maxHealth, float currentHealth)
