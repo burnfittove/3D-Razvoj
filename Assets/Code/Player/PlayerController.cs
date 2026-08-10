@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     private void TransitionCompleted()
     {
-        _isEnabled = true; 
+        _isEnabled = true;
         _animator.speed = 1;
     }
 }
