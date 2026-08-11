@@ -9,6 +9,7 @@ namespace Code.Managers
         private Animator _animator;
         private float _timer;
         private bool _reset;
+        public static TextManager instance;
 
         private void Awake()
         {
@@ -24,7 +25,7 @@ namespace Code.Managers
         {
             if (_timer <= 0)
             {
-                _animator.SetTrigger("HideText");
+                _animator?.SetTrigger("HideText");
                 return;
             }
             
@@ -34,14 +35,19 @@ namespace Code.Managers
         private void DisplayTextHandler(string text, float time)
         {
             // Reset trigger
-            _animator.ResetTrigger("HideText");
+            _animator?.ResetTrigger("HideText");
             
             // Set trigger
-            _animator.SetTrigger("DisplayText");
+            _animator?.SetTrigger("DisplayText");
             
             // Set text and timer
             textComponent.text = text;
             _timer = time;
+        }
+
+        public void SetTextComponent(TMP_Text textComponent)
+        {
+            textComponent?.TryGetComponent(out _animator);
         }
     }
 }
