@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,6 +24,16 @@ public class PlayerHealthComponent : HealthComponent
         
         _animator = GetComponent<Animator>();
         _cooldownBuffer = regenerationCooldown;
+    }
+
+    private void Start()
+    {
+        if (!GameEventManager.instance)
+        {
+            Debug.LogWarning($"No instance of GameEventManager found in scene! Unable to subscribe {nameof(HealOnSpiritCollected)}.");
+            return;
+        }
+        GameEventManager.instance.miscellaneousEvents.SpiritCollected += HealOnSpiritCollected;
     }
 
     private void Update()
@@ -54,5 +65,10 @@ public class PlayerHealthComponent : HealthComponent
     {
         base.Heal(healAmount);
         VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, _currentHealth));   // Calculate the current health state and pass it to the VignetteController
+    }
+
+    private void HealOnSpiritCollected()
+    {
+        Heal(2);
     }
 }
