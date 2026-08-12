@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private Animator _animator;
     private PlayerStamina _playerStamina;
+    private HealthComponent _playerHealth;
 
     private Vector2 _movementDirection;
     public float movementSpeed;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
         _playerStamina = GetComponent<PlayerStamina>();
+        _playerHealth = GetComponent<HealthComponent>();
     }
 
     private void Start()
@@ -52,7 +54,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        
         if (!_isEnabled) return;
+        
+        // Checking for death
+        if (_playerHealth.CurrentHealth <= 0)
+        {
+            _animator?.SetTrigger("Death");
+            _isEnabled = false;
+        }
         
         // If running, consume stamina
         if (isRunning && _movementDirection != Vector2.zero) _playerStamina.ConsumeStamina();

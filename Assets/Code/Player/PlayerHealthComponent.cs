@@ -1,7 +1,4 @@
-using System;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public enum HealthState
 {
@@ -42,7 +39,7 @@ public class PlayerHealthComponent : HealthComponent
 
         if (_cooldownBuffer > 0) return;
         Heal(regenerationRate * Time.deltaTime);
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
     }
 
     public HealthState CalculateHealthState(float maxHealth, float currentHealth)
@@ -56,15 +53,15 @@ public class PlayerHealthComponent : HealthComponent
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, _currentHealth));   // Calculate the current health state and pass it to the VignetteController
+        VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, CurrentHealth));   // Calculate the current health state and pass it to the VignetteController
         _cooldownBuffer = regenerationCooldown;
-        Debug.Log(_currentHealth);
+        Debug.Log(CurrentHealth);
     }
 
     public override void Heal(float healAmount)
     {
         base.Heal(healAmount);
-        VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, _currentHealth));   // Calculate the current health state and pass it to the VignetteController
+        VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, CurrentHealth));   // Calculate the current health state and pass it to the VignetteController
     }
 
     private void HealOnSpiritCollected()
