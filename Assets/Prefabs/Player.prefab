@@ -52,6 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   movementSpeed: 2
   runningSpeed: 3.5
+  deathTimer: 2.5
+  deathScene: GAME OVER
   _spirits: 0
 --- !u!114 &7182292107909501714
 MonoBehaviour:

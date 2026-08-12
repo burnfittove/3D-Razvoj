@@ -1,4 +1,5 @@
 using System;
+using Code.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,10 @@ public class PlayerController : MonoBehaviour
     public float runningSpeed;
     private bool isRunning;
     private bool _isEnabled;
+    private bool _isDead;
+
+    public float deathTimer;
+    public string deathScene;
     
     // ##### DEBUG #####
     [SerializeField] private int _spirits;
@@ -54,6 +59,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (_isDead)
+        {
+            deathTimer -= Time.deltaTime;
+
+            if (deathTimer > 0) return;
+            
+            ChangeToDeathScene(deathScene);
+        }
         
         if (!_isEnabled) return;
         
@@ -62,6 +75,7 @@ public class PlayerController : MonoBehaviour
         {
             _animator?.SetTrigger("Death");
             _isEnabled = false;
+            _isDead = true;
         }
         
         // If running, consume stamina
@@ -129,5 +143,10 @@ public class PlayerController : MonoBehaviour
     {
         _isEnabled = true;
         _animator.speed = 1;
+    }
+
+    private void ChangeToDeathScene(string sceneName)
+    {
+        SceneChangeManager.instance.LoadScene(sceneName);
     }
 }
