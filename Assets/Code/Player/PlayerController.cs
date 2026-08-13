@@ -62,13 +62,16 @@ public class PlayerController : MonoBehaviour
         if (_isDead)
         {
             deathTimer -= Time.deltaTime;
-
             if (deathTimer > 0) return;
             
             ChangeToDeathScene(deathScene);
         }
-        
-        if (!_isEnabled) return;
+
+        if (!_isEnabled)
+        {
+            if (_playerHealth.CurrentHealth <= 0) return;
+            _isEnabled = true;
+        }
         
         // Checking for death
         if (_playerHealth.CurrentHealth <= 0)
@@ -147,6 +150,8 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeToDeathScene(string sceneName)
     {
+        _isDead = false;
+        _isEnabled = false;
         SceneChangeManager.instance.LoadScene(sceneName);
     }
 }

@@ -480,7 +480,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1263130395225528081, guid: 055f140b67b1e0b57a766537df0b5277, type: 3}
       propertyPath: nextScene
-      value: OutsideTest
+      value: MAIN MENU
       objectReference: {fileID: 0}
     - target: {fileID: 2276872883576121422, guid: 055f140b67b1e0b57a766537df0b5277, type: 3}
       propertyPath: m_Name

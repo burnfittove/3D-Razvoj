@@ -19,4 +19,9 @@ public class Button : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ContinueFromCheckpoint()
+    {
+        
+    }
 }

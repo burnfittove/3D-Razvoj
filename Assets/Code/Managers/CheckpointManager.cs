@@ -1,27 +1,28 @@
 using Code.Saving;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 namespace Code.Managers
 {
     public class CheckpointManager : MonoBehaviour
     {
-        public static CheckpointManager Instance { get; private set; }
+        public static CheckpointManager instance { get; private set; }
         public string checkpointSceneName;
         public Vector3 checkpointTarget;
 
         private void Awake()
         {
-            if (Instance && Instance != this)
+            if (instance && instance != this)
             {
                 Destroy(gameObject);
                 return;
             }
 
-            Instance = this;
+            instance = this;
         }
 
-        private void CreateCheckpointHandler()
+        public void CreateCheckpoint()
         {
             checkpointSceneName = SceneManager.GetActiveScene().name;
             checkpointTarget = Vector3.zero;
@@ -30,6 +31,21 @@ namespace Code.Managers
 
             var isSaveSuccessful = saveDataMapper.SaveGame();
             Debug.Log(isSaveSuccessful ? "Successfully saved checkpoint!" : "Failed to save checkpoint!");
+        }
+
+        private void LoadCheckpoint()
+        {
+            var saveDataMapper = new SaveDataMapper();
+
+            if (!saveDataMapper.LoadGame())
+            {
+                Debug.Log("Failed to load checkpoint!");
+                return;
+            }
+
+            if (!SceneChangeManager.instance) return;
+            SceneChangeManager.instance.AddObjectPosition(GameObject.FindGameObjectWithTag("Player"), checkpointTarget);
+            SceneChangeManager.instance.LoadScene(checkpointSceneName);
         }
     }
 }

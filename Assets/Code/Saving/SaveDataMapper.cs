@@ -1,3 +1,4 @@
+using System.IO;
 using Code.Managers;
 using UnityEngine;
 
@@ -27,11 +28,28 @@ namespace Code.Saving
                 spiritCount = SpiritManager.instance.spiritCount,
                 spiritStates = SpiritManager.instance.spiritStates,
                 playerHealth = playerHealthComponent.CurrentHealth,
-                lastScene = CheckpointManager.Instance.checkpointSceneName,
-                checkpointTargetPos = CheckpointManager.Instance.checkpointTarget,
+                lastScene = CheckpointManager.instance.checkpointSceneName,
+                checkpointTargetPos = CheckpointManager.instance.checkpointTarget,
             };
             
+            Debug.Log(saveData.spiritCount);
+            Debug.Log(saveData.spiritStates);
+            Debug.Log(saveData.playerHealth);
+            Debug.Log(saveData.lastScene);
+            Debug.Log(saveData.checkpointTargetPos);
+            
             return saveData;
+        }
+
+        private bool MapDataToGame(SaveData data)
+        {
+            if (!SpiritManager.instance || !CheckpointManager.instance) return false;
+            SpiritManager.instance.spiritCount = data.spiritCount;
+            SpiritManager.instance.spiritStates = data.spiritStates;
+            playerHealthComponent.CurrentHealth = data.playerHealth;
+            CheckpointManager.instance.checkpointSceneName = data.lastScene;
+            CheckpointManager.instance.checkpointTarget = data.checkpointTargetPos;
+            return true;
         }
         
         public bool SaveGame()
@@ -39,6 +57,14 @@ namespace Code.Saving
             saveData = MapDataToObject();
             if (saveData == null) return false;
             return saveDataToFile.SaveGame(saveData);
+        }
+
+        public bool LoadGame()
+        {
+            var data = saveDataToFile.LoadGame();   // Load the save game data
+            
+            return data != null && // If there is no data, return
+                   MapDataToGame(data); // Otherwise, map the data to game objects
         }
     }
 }

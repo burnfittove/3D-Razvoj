@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Code.Managers;
 using UnityEngine;
 
 public class SpiritManager : MonoBehaviour
 {
     public static SpiritManager instance;
-    public readonly Dictionary<string, bool> spiritStates = new();
+    public Dictionary<string, bool> spiritStates = new();
     public int spiritCount;
     public List<string> spiritPrefabs;
 
@@ -24,6 +25,7 @@ public class SpiritManager : MonoBehaviour
     private void Start()
     {
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += IncreaseSpiritCount;
+        GameEventManager.instance.miscellaneousEvents.SpiritCollected += () => Debug.Log(spiritCount);
     }
 
     public bool IsSpiritActive(string spiritId)
@@ -51,8 +53,8 @@ public class SpiritManager : MonoBehaviour
         spiritCount++;
 
         if (spiritCount % 5 != 0) return;
-        if (!GameEventManager.instance) return;
+        if (!CheckpointManager.instance) return;
 
-        GameEventManager.instance.miscellaneousEvents.CreateCheckpoint();
+        CheckpointManager.instance.CreateCheckpoint();
     }
 }
