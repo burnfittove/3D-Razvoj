@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         // ##### DEBUG #####
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = SceneManager.GetActiveScene().name == "GAME OVER" ? CursorLockMode.None : CursorLockMode.Locked;
         
         _isEnabled = true;
 
