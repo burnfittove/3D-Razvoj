@@ -20,8 +20,14 @@ public class Button : MonoBehaviour
         Application.Quit();
     }
 
-    public void ContinueFromCheckpoint()
+    public void LoadFromCheckpoint()
     {
+        if (!SaveDataManager.Instance)
+        {
+            Debug.LogError("SaveDataManager not found in scene!");
+            return;
+        }
         
+        SaveDataManager.Instance.LoadCheckpoint();
     }
 }

@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-public class SaveDataToFile
+public class WriteReadSaveData
 {
     private readonly string savePath = Application.persistentDataPath + "/savedata.json";
     

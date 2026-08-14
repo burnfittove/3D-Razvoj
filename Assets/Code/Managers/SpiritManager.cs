@@ -25,7 +25,6 @@ public class SpiritManager : MonoBehaviour
     private void Start()
     {
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += IncreaseSpiritCount;
-        GameEventManager.instance.miscellaneousEvents.SpiritCollected += () => Debug.Log(spiritCount);
     }
 
     public bool IsSpiritActive(string spiritId)
@@ -50,11 +49,11 @@ public class SpiritManager : MonoBehaviour
 
     private void IncreaseSpiritCount()
     {
-        spiritCount++;
+        spiritCount++;  // Increment
 
-        if (spiritCount % 5 != 0) return;
-        if (!CheckpointManager.instance) return;
+        if (spiritCount % 5 != 0) return;   // If the number of collected spirits is not divisible by 5, return; a checkpoint is created every 5 spirits collected
+        if (!SaveDataManager.Instance) return;  // If there is no SaveDataManager, return
 
-        CheckpointManager.instance.CreateCheckpoint();
+        SaveDataManager.Instance.CreateCheckpoint();    // Create a checkpoint
     }
 }
