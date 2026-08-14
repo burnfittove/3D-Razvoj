@@ -5,6 +5,7 @@ public class KeepBetweenScenes : MonoBehaviour
 {
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (!PersistantObjectManager.Instance) return;
+        PersistantObjectManager.Instance.AddObject(gameObject);
     }
 }

@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PersistantObjectManager : MonoBehaviour
 {
@@ -9,19 +9,23 @@ public class PersistantObjectManager : MonoBehaviour
 
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().name == "MAIN MENU") Destroy(gameObject);
+        
         if (Instance && Instance != this)
         {
-            Destroy(this);
+            Debug.LogWarning("Multiple instances of PersistantObjectManager");
+            Destroy(gameObject);
             return;
         }
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void AddObject(GameObject obj)
     {
         persistantObjects.Add(obj);
-        DontDestroyOnLoad(obj);
+        // DontDestroyOnLoad(obj);
     }
 
     public void DestroyAllObjects()
