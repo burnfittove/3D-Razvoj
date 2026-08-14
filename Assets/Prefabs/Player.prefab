@@ -52,8 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   movementSpeed: 2
   runningSpeed: 3.5
-  deathTimer: 2.5
-  deathScene: GAME OVER
+  isDead: 0
   _spirits: 0
 --- !u!114 &7182292107909501714
 MonoBehaviour:
@@ -241,6 +240,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -3793240069906740630, guid: 6345efb2acf6d5de88f9629467d814f3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3196511607817033700, guid: 6345efb2acf6d5de88f9629467d814f3, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -376,6 +379,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6345efb2acf6d5de88f9629467d814f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6234435284453147519}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6345efb2acf6d5de88f9629467d814f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 358339299692374471}
   m_SourcePrefab: {fileID: 100100000, guid: 6345efb2acf6d5de88f9629467d814f3, type: 3}
 --- !u!4 &2319615991487407317 stripped
 Transform:
@@ -409,3 +415,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &358339299692374471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3133167066578452079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b5ce683833fa989a6f3d73ee1a3a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death

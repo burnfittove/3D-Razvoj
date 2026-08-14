@@ -14,12 +14,13 @@ public class PlayerHealthComponent : HealthComponent
     public float regenerationCooldown;
     public float regenerationRate;
     private float _cooldownBuffer;
+    private PlayerController _playerController;
 
     protected override void Awake()
     {
         base.Awake();
-        
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
+        _playerController = GetComponent<PlayerController>();
         _cooldownBuffer = regenerationCooldown;
     }
 
@@ -55,7 +56,6 @@ public class PlayerHealthComponent : HealthComponent
         base.TakeDamage(damage);
         VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, CurrentHealth));   // Calculate the current health state and pass it to the VignetteController
         _cooldownBuffer = regenerationCooldown;
-        Debug.Log(CurrentHealth);
     }
 
     public override void Heal(float healAmount)
@@ -67,5 +67,12 @@ public class PlayerHealthComponent : HealthComponent
     private void HealOnSpiritCollected()
     {
         Heal(2);
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        _animator?.SetTrigger("Death");
+        _playerController.isDead = true;
     }
 }

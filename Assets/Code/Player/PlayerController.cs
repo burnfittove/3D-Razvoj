@@ -1,5 +1,3 @@
-using System;
-using Code.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -12,16 +10,14 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private PlayerStamina _playerStamina;
     private HealthComponent _playerHealth;
+    private SkinnedMeshRenderer _playerRenderer;
 
     private Vector2 _movementDirection;
     public float movementSpeed;
     public float runningSpeed;
     private bool isRunning;
     private bool _isEnabled;
-    private bool _isDead;
-
-    public float deathTimer;
-    public string deathScene;
+    public bool isDead;
     
     // ##### DEBUG #####
     [SerializeField] private int _spirits;
@@ -33,6 +29,7 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _playerStamina = GetComponent<PlayerStamina>();
         _playerHealth = GetComponent<HealthComponent>();
+        _playerRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     private void Start()
@@ -59,27 +56,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_isDead)
+        // ##### DEBUG #####
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            deathTimer -= Time.deltaTime;
-            if (deathTimer > 0) return;
-            
-            ChangeToDeathScene(deathScene);
+            _playerHealth.TakeDamage(50);
         }
 
-        if (!_isEnabled)
+        _playerRenderer.enabled = !isDead;    // Show or hide the player
+        
+        if (isDead)
         {
             if (_playerHealth.CurrentHealth <= 0) return;
-            _isEnabled = true;
+            isDead = false;
         }
         
-        // Checking for death
-        if (_playerHealth.CurrentHealth <= 0)
-        {
-            _animator?.SetTrigger("Death");
-            _isEnabled = false;
-            _isDead = true;
-        }
+        if (!_isEnabled) return;
         
         // If running, consume stamina
         if (isRunning && _movementDirection != Vector2.zero) _playerStamina.ConsumeStamina();
@@ -146,12 +137,5 @@ public class PlayerController : MonoBehaviour
     {
         _isEnabled = true;
         _animator.speed = 1;
-    }
-
-    private void ChangeToDeathScene(string sceneName)
-    {
-        _isDead = false;
-        _isEnabled = false;
-        SceneChangeManager.instance.LoadScene(sceneName);
     }
 }
