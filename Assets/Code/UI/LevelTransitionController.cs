@@ -7,6 +7,7 @@ public class LevelTransitionController : MonoBehaviour
 
     private void Awake()
     {
+        if (_animator) return;
         _animator = GetComponent<Animator>();
     }
 
@@ -19,12 +20,22 @@ public class LevelTransitionController : MonoBehaviour
 
     private void FadeOut(Scene arg0, LoadSceneMode arg1)
     {
-        _animator.SetTrigger("FadeOut");
+        if (!_animator)
+        {
+            Debug.Log("No animator found, fetching...");
+            _animator = GetComponent<Animator>();
+        }
+        _animator?.SetTrigger("FadeOut");
     }
 
     private void TransitionStartedHandler()
     {
-        _animator.SetTrigger("FadeIn");
+        if (!_animator)
+        {
+            Debug.Log("No animator found");
+            return;
+        }
+        _animator?.SetTrigger("FadeIn");
     }
     
     public void FadeInCompleted()

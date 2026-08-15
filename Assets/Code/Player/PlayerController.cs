@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float runningSpeed;
     private bool isRunning;
     private bool _isEnabled;
+    private bool _isHidden;
     public bool isDead;
     
     // ##### DEBUG #####
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
         _playerRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         // ##### DEBUG #####
         Cursor.lockState = SceneManager.GetActiveScene().name == "GAME OVER" ? CursorLockMode.None : CursorLockMode.Locked;
@@ -47,11 +48,17 @@ public class PlayerController : MonoBehaviour
         GameEventManager.instance.inputEvents.Move += Move;
         GameEventManager.instance.inputEvents.Run += Run;
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += CollectSpirit;
+        GameEventManager.instance.miscellaneousEvents.SetPlayerCharacterActiveState += SetActiveState;
         GameEventManager.instance.sceneEvents.OnTransitionStarted += TransitionStarted;
         GameEventManager.instance.sceneEvents.OnTransitionCompleted += TransitionCompleted;
         SceneManager.sceneLoaded += UpdateCameraReference;
         
         cam = Camera.main;
+    }
+
+    private void SetActiveState(bool state)
+    {
+        _isHidden = state;
     }
 
     private void Update()
@@ -61,6 +68,8 @@ public class PlayerController : MonoBehaviour
         {
             _playerHealth.TakeDamage(50);
         }
+
+        if (_isHidden) return;
 
         _playerRenderer.enabled = !isDead;    // Show or hide the player
         

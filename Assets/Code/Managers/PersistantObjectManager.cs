@@ -9,11 +9,9 @@ public class PersistantObjectManager : MonoBehaviour
 
     private void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "MAIN MENU") Destroy(gameObject);
-        
         if (Instance && Instance != this)
         {
-            Debug.LogWarning("Multiple instances of PersistantObjectManager");
+            Debug.Log("PersistantObjectManager already exists, destroying!");
             Destroy(gameObject);
             return;
         }

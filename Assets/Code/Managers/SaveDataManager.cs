@@ -1,3 +1,4 @@
+using System;
 using Code.Saving;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,8 +8,8 @@ namespace Code.Managers
     public class SaveDataManager : MonoBehaviour
     {
         public static SaveDataManager Instance { get; private set; }
-        public string checkpointSceneName;
-        public Vector3 checkpointTarget;
+        [HideInInspector] public string checkpointSceneName;
+        [HideInInspector] public Vector3 checkpointTarget;
         private SaveData _data;
         
         private void Awake()
@@ -21,6 +22,7 @@ namespace Code.Managers
             }
 
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         private void Start()
@@ -28,8 +30,14 @@ namespace Code.Managers
             SceneManager.sceneLoaded += LoadData;
         }
 
+        private void Update()
+        {
+            Debug.Log($"{_data == null} | {_data}");
+        }
+
         private void LoadData(Scene arg0, LoadSceneMode arg1)
         {
+            Debug.Log($"{_data == null} | {_data}");
             if (_data == null) return;  // If there's no data, return
             var saveDataMapper = new SaveDataMapper();  // Create new object
             

@@ -8,4 +8,7 @@ public class MiscellaneousEvents
     
     public event Action<Vector3> SceneLoadLocationSet;
     public void OnSceneLoadLocationSet(Vector3 location) => SceneLoadLocationSet?.Invoke(location);
+
+    public event Action<bool> SetPlayerCharacterActiveState;
+    public void OnSetPlayerCharacterActiveState(bool active) => SetPlayerCharacterActiveState?.Invoke(active);
 }

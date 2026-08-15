@@ -14,8 +14,8 @@ public class SpiritManager : MonoBehaviour
     {
         if (instance && instance != this)
         {
-            Debug.LogWarning("Multiple instances of SpiritManager in the scene!");
-            gameObject.SetActive(false);
+            Debug.Log("SpiritManager already exists, destroying!");
+            Destroy(gameObject);
             return;
         }
 

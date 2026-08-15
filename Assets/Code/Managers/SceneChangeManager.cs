@@ -15,8 +15,8 @@ namespace Code.Managers
         {
             if (instance && instance != this)
             {
-                Debug.LogWarning("Multiple instance of SceneChangeManager in scene!");
-                gameObject.SetActive(false);
+                Debug.Log("SceneChangeManager already exists, destroying!");
+                Destroy(gameObject);
                 return;
             }
 
