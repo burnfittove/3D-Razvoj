@@ -14,7 +14,7 @@ namespace Code
         private bool isPlayerCharacterActive;
         public List<string> playerCharacterInactiveScenes;
 
-        private void Start()
+        private void OnEnable()
         {
             SceneManager.sceneLoaded += CheckPlayerCharacterActive;
             
@@ -47,7 +47,7 @@ namespace Code
         
         private void SetActiveState(bool state)
         {
-            GameEventManager.instance.miscellaneousEvents.OnSetPlayerCharacterActiveState(state);
+            playerCharacter.SetActive(state);
             healthVignette.enabled = state;
             staminaCanvas.enabled = state;
         }

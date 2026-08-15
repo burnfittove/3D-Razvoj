@@ -33,10 +33,10 @@ public class PlayerController : MonoBehaviour
         _playerRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
         // ##### DEBUG #####
-        Cursor.lockState = SceneManager.GetActiveScene().name == "GAME OVER" ? CursorLockMode.None : CursorLockMode.Locked;
+        SceneManager.sceneLoaded += SetCursorState;
         
         _isEnabled = true;
 
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("No GameEventManager found in scene.");
             return;
         }
+        
         GameEventManager.instance.inputEvents.Move += Move;
         GameEventManager.instance.inputEvents.Run += Run;
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += CollectSpirit;
@@ -56,9 +57,15 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
     }
 
+    private void SetCursorState(Scene arg0, LoadSceneMode arg1)
+    {
+        if (SceneManager.GetActiveScene().name == "MAIN MENU" || SceneManager.GetActiveScene().name == "GAME OVER") Cursor.lockState = CursorLockMode.None;
+        else Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void SetActiveState(bool state)
     {
-        _isHidden = state;
+        _isHidden = !state; // When someone says 'set active state to inactive (false)' this says 'it's hidden (true)'
     }
 
     private void Update()
@@ -92,7 +99,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!_isEnabled) return;
+        if (!_isEnabled || isDead || _isHidden) return;
+        if (_isHidden) return;
         
         // Move
         UpdateMovement();

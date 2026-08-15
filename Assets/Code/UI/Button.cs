@@ -5,13 +5,22 @@ public class Button : MonoBehaviour
 {
     public string nextScene;
 
-    public void ChangeScene()
+    public void ChangeScene(Transform nextSceneLocation)
     {
+        var playerCharacter = GameObject.FindGameObjectWithTag("Player");
         if (!SceneChangeManager.instance)
         {
             Debug.LogError("SceneChangeManager not found in scene!");
             return;
         }
+
+        if (!playerCharacter)
+        {
+            Debug.LogError("PlayerCharacter not found in scene!");
+            return;
+        }
+        
+        SceneChangeManager.instance.AddObjectPosition(playerCharacter, nextSceneLocation.position);
         SceneChangeManager.instance.LoadScene(nextScene);
     }
 
