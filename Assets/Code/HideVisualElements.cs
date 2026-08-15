@@ -47,7 +47,7 @@ namespace Code
         
         private void SetActiveState(bool state)
         {
-            playerCharacter.SetActive(state);
+            if (playerCharacter) playerCharacter.SetActive(state);
             healthVignette.enabled = state;
             staminaCanvas.enabled = state;
         }
