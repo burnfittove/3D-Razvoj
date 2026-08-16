@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class VignetteController : MonoBehaviour
 {
@@ -61,5 +62,10 @@ public class VignetteController : MonoBehaviour
         };
 
         UpdateProfile();
+    }
+
+    public void SetVignetteState(bool state)
+    {
+        _volume.enabled = state;
     }
 }

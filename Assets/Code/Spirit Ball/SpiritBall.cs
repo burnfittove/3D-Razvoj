@@ -6,6 +6,7 @@ public class SpiritBall : MonoBehaviour
     private MeshRenderer _meshRenderer;
     private Collider _collider;
     private Light _light;
+    public string ID;
 
     private void Awake()
     {
@@ -33,6 +34,8 @@ public class SpiritBall : MonoBehaviour
         SetState(SpiritManager.instance.IsSpiritActive(GetSpiritID()));
 
         #endregion
+        
+        ID = GetSpiritID();
     }
 
     private void OnTriggerEnter(Collider other)
