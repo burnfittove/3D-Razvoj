@@ -21,7 +21,7 @@ namespace Code.Saving
             saveData = new SaveData
             {
                 spiritCount = SpiritManager.instance.spiritCount,                   // Set amount of spirits collected
-                spiritStates = SpiritManager.instance.spiritStates,                 // Set collected spirits and their hashes
+                spiritStates = SpiritManager.instance.spiritStates,                 // Set collected spirits and their states
                 playerHealth = playerHealthComponent.CurrentHealth,                 // Set the player character's health
                 lastScene = SaveDataManager.Instance.checkpointSceneName,           // Set the scene in which the checkpoint was saved
                 checkpointTargetPos = SaveDataManager.Instance.checkpointTarget,    // Set the position to which the player should be placed
@@ -58,7 +58,7 @@ namespace Code.Saving
         public SaveData RetrieveData()
         {
             var data = writeReadSaveData.LoadGame();   // Load the save game data
-            
+            Debug.Log("2");
             return data;
         }
     }

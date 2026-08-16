@@ -9,6 +9,7 @@ public class WriteReadSaveData
     {
         var json = JsonUtility.ToJson(data);    // Convert to JSON
         File.WriteAllText(savePath, json);  // Save to file
+        Debug.Log(json);
         return true;    // Confirm save
     }
 
@@ -16,11 +17,12 @@ public class WriteReadSaveData
     {
         if (!File.Exists(savePath)) return null;    // Return null if there is no save file
         var json = File.ReadAllText(savePath);  // Read the data from the file
+        Debug.Log(json);
         return JsonUtility.FromJson<SaveData>(json);    // Convert the data to SaveData
     }
-    
-    public string GetSaveFilePath()
+
+    public bool DoesFileExists()
     {
-        return savePath;
+        return File.Exists(savePath);
     }
 }

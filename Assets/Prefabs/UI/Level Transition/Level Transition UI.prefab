@@ -226,3 +226,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01e2bd8f8b792f58b2a9cb39372972b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelTransitionController
+  _animator: {fileID: 6586737318831314737}

@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private PlayerStamina _playerStamina;
     private HealthComponent _playerHealth;
-    private SkinnedMeshRenderer _playerRenderer;
+    public SkinnedMeshRenderer _playerRenderer;
 
     private Vector2 _movementDirection;
     public float movementSpeed;
@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _playerStamina = GetComponent<PlayerStamina>();
         _playerHealth = GetComponent<HealthComponent>();
-        _playerRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     private void Start()
@@ -71,6 +70,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // ##### DEBUG #####
+        foreach (var instanceSpiritState in SpiritManager.instance.spiritStates)
+        {
+            Debug.LogWarning(instanceSpiritState.ToString());
+        }
+        
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             _playerHealth.TakeDamage(50);

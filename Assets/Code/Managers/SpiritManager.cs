@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Code;
 using Code.Managers;
 using UnityEngine;
 
 public class SpiritManager : MonoBehaviour
 {
     public static SpiritManager instance;
-    public Dictionary<string, bool> spiritStates = new();
+    [SerializeField] public SerializedDictionary<string, bool> spiritStates = new();
     public int spiritCount;
     public List<string> spiritPrefabs;
 

@@ -1,10 +1,10 @@
 using Code.Managers;
 using UnityEngine;
 
-public class Button : MonoBehaviour
+public class ButtonMethods : MonoBehaviour
 {
     public string nextScene;
-
+    
     public void ChangeScene(Transform nextSceneLocation)
     {
         var playerCharacter = GameObject.FindGameObjectWithTag("Player");
@@ -37,6 +37,7 @@ public class Button : MonoBehaviour
             return;
         }
         
+        Debug.Log("1", this);
         SaveDataManager.Instance.LoadCheckpoint();
     }
 }

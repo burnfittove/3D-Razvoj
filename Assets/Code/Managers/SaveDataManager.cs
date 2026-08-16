@@ -1,5 +1,6 @@
 using System;
 using Code.Saving;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,11 +31,6 @@ namespace Code.Managers
             SceneManager.sceneLoaded += LoadData;
         }
 
-        private void Update()
-        {
-            Debug.Log($"{_data == null} | {_data}");
-        }
-
         private void LoadData(Scene arg0, LoadSceneMode arg1)
         {
             Debug.Log($"{_data == null} | {_data}");
@@ -58,7 +54,8 @@ namespace Code.Managers
             var saveDataMapper = new SaveDataMapper();  // Create new object
 
             var isSaveSuccessful = saveDataMapper.SaveGame();   // Attempt to save
-            Debug.LogError(isSaveSuccessful ? "Successfully saved checkpoint!" : "Failed to save checkpoint!"); // If the save was unsuccessful, return an error message
+            if (isSaveSuccessful) Debug.Log("Save Data Saved!");
+            else Debug.LogError("Save Data Failed!");
         }
 
         public void LoadCheckpoint()
@@ -74,8 +71,9 @@ namespace Code.Managers
             }
             
             _data = loadedData; // Cache save data
+            Debug.Log("3", this);
 
-            var player = GameObject.FindGameObjectWithTag("Player");
+            var player = GameObject.FindGameObjectWithTag("Player"); Debug.Log("4", this);
 
             // Only proceed if there is a player character
             if (!player)
@@ -85,8 +83,8 @@ namespace Code.Managers
             }
             
             // Load last scene on last location
-            checkpointSceneName = _data.lastScene;
-            checkpointTarget = _data.checkpointTargetPos;
+            checkpointSceneName = _data.lastScene; Debug.Log("5", this);
+            checkpointTarget = _data.checkpointTargetPos; Debug.Log("6", this);
             
             // Only proceed if there is SceneChangeManager
             if (!SceneChangeManager.instance)
@@ -94,8 +92,15 @@ namespace Code.Managers
                 Debug.LogError("Couldn't find SceneChangeManager!");
                 return;
             }
-            SceneChangeManager.instance.AddObjectPosition(player, checkpointTarget);
-            SceneChangeManager.instance.LoadScene(checkpointSceneName);
+            
+            SceneChangeManager.instance.AddObjectPosition(player, checkpointTarget); Debug.Log("7", this);
+            SceneChangeManager.instance.LoadScene(checkpointSceneName); Debug.Log("8", this);
+        }
+
+        public bool DoesFileExists()
+        {
+            var temp = new WriteReadSaveData();
+            return temp.DoesFileExists();
         }
     }
 }
