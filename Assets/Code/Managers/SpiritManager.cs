@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpiritManager : MonoBehaviour
 {
     public static SpiritManager instance;
-    [SerializeField] public SerializedDictionary<string, bool> spiritStates = new();
+    public Dictionary<string, bool> spiritStates = new();
     public int spiritCount;
     public List<string> spiritPrefabs;
 
@@ -27,14 +27,6 @@ public class SpiritManager : MonoBehaviour
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += IncreaseSpiritCount;
     }
 
-    private void Update()
-    {
-        foreach (var spiritState in spiritStates)
-        {
-            Debug.Log($"Spirit {spiritState.Key}: {spiritState.Value}");
-        }
-    }
-
     public bool IsSpiritActive(string spiritId)
     {
         return spiritStates.ContainsKey(spiritId) && spiritStates[spiritId];
@@ -42,11 +34,6 @@ public class SpiritManager : MonoBehaviour
 
     public void AddSpirit(string spiritId)
     {
-        foreach (var pair in spiritStates)
-        {
-            Debug.Log(pair.Key);
-        }
-        
         if (spiritStates.ContainsKey(spiritId))
         {
             Debug.LogError($"Spirit {spiritId} is already in use!");

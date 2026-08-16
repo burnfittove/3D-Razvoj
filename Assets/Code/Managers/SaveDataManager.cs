@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Code.Saving;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -28,7 +29,7 @@ namespace Code.Managers
 
         private void Start()
         {
-            SceneManager.sceneLoaded += LoadData;
+            // SceneManager.sceneLoaded += LoadData;
         }
 
         private void LoadData(Scene arg0, LoadSceneMode arg1)
@@ -37,6 +38,7 @@ namespace Code.Managers
             var saveDataMapper = new SaveDataMapper();  // Create new object
             
             var result = saveDataMapper.LoadGame(_data);    // Attempt to load data
+            SpiritManager.instance.spiritStates.ToList().ForEach(kvp => Debug.Log(kvp.Key + " : " + kvp.Value));
             if (result)                                 // If loading was successful...
             {
                 _data = null;                           // erase the cached data...
@@ -69,7 +71,13 @@ namespace Code.Managers
                 return;
             }
             
-            _data = loadedData; // Cache save data
+            var result = saveDataMapper.LoadGame(loadedData);
+
+            if (!result)
+            {
+                Debug.LogError("Couldn't load save data!");
+                return;
+            }
 
             var player = GameObject.FindGameObjectWithTag("Player");
 
@@ -81,8 +89,8 @@ namespace Code.Managers
             }
             
             // Load last scene on last location
-            checkpointSceneName = _data.lastScene;
-            checkpointTarget = _data.checkpointTargetPos;
+            checkpointSceneName = loadedData.lastScene;
+            checkpointTarget = Vector3.zero;
             
             // Only proceed if there is SceneChangeManager
             if (!SceneChangeManager.instance)

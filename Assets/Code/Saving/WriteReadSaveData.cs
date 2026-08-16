@@ -1,4 +1,5 @@
 using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class WriteReadSaveData
@@ -7,7 +8,7 @@ public class WriteReadSaveData
     
     public bool SaveGame(SaveData data)
     {
-        var json = JsonUtility.ToJson(data);    // Convert to JSON
+        var json = JsonConvert.SerializeObject(data);    // Convert to JSON
         File.WriteAllText(savePath, json);  // Save to file
         return true;    // Confirm save
     }
@@ -16,7 +17,7 @@ public class WriteReadSaveData
     {
         if (!File.Exists(savePath)) return null;    // Return null if there is no save file
         var json = File.ReadAllText(savePath);  // Read the data from the file
-        return JsonUtility.FromJson<SaveData>(json);    // Convert the data to SaveData
+        return JsonConvert.DeserializeObject<SaveData>(json);    // Convert the data to SaveData
     }
 
     public bool DoesFileExists()

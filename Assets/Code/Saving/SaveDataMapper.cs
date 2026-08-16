@@ -24,7 +24,7 @@ namespace Code.Saving
                 spiritStates = SpiritManager.instance.spiritStates,                 // Set collected spirits and their states
                 playerHealth = playerHealthComponent.CurrentHealth,                 // Set the player character's health
                 lastScene = SaveDataManager.Instance.checkpointSceneName,           // Set the scene in which the checkpoint was saved
-                checkpointTargetPos = SaveDataManager.Instance.checkpointTarget,    // Set the position to which the player should be placed
+                // checkpointTargetPos = SaveDataManager.Instance.checkpointTarget,    // Set the position to which the player should be placed
             };
             
             // ##### DEBUG #####
@@ -32,7 +32,7 @@ namespace Code.Saving
             Debug.Log(saveData.spiritStates);
             Debug.Log(saveData.playerHealth);
             Debug.Log(saveData.lastScene);
-            Debug.Log(saveData.checkpointTargetPos);
+            // Debug.Log(saveData.checkpointTargetPos);
             
             return saveData;    // Return saved data
         }
@@ -44,7 +44,7 @@ namespace Code.Saving
             SpiritManager.instance.spiritStates = data.spiritStates;                // Set collected spirits and their hashes
             playerHealthComponent.CurrentHealth = data.playerHealth;                // Set the player character's health
             SaveDataManager.Instance.checkpointSceneName = data.lastScene;          // Set the scene in which the checkpoint was saved
-            SaveDataManager.Instance.checkpointTarget = data.checkpointTargetPos;   // Set the position to which the player should be placed
+            // SaveDataManager.Instance.checkpointTarget = data.checkpointTargetPos;   // Set the position to which the player should be placed
             return true;    // Return successful load
         }
         

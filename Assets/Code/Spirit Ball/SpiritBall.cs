@@ -29,7 +29,7 @@ public class SpiritBall : MonoBehaviour
         }
         
         // Attempt to add spirit's ID to the SpiritManager's hash map
-        // SpiritManager.instance.AddSpirit(GetSpiritID());
+        SpiritManager.instance.AddSpirit(GetSpiritID());
         
         // Set a spirit's state as the same state present in the hash map. By default, this state will be true, but if the spirit was previously added to the hash map and then collected, its value will be false
         SetState(SpiritManager.instance.IsSpiritActive(GetSpiritID()));
