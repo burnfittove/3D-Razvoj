@@ -37,7 +37,6 @@ public class ButtonMethods : MonoBehaviour
             return;
         }
         
-        Debug.Log("1", this);
         SaveDataManager.Instance.LoadCheckpoint();
     }
 }

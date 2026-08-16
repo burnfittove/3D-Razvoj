@@ -7,7 +7,7 @@ namespace Code
     [Serializable]
     public class SerializedDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
     {
-        [SerializeField] private List<SerializedDictionaryElement<TKey, TValue>> elements = new();
+        [SerializeField] public List<SerializedDictionaryElement<TKey, TValue>> elements = new();
         
         public void OnBeforeSerialize()
         {
@@ -21,9 +21,9 @@ namespace Code
         public void OnAfterDeserialize()
         {
             Clear();
-            foreach (var pair in this)
+            foreach (var pair in elements)
             {
-                this[pair.Key] = pair.Value;
+                Add(pair.Key, pair.Value);
             }
         }
     }

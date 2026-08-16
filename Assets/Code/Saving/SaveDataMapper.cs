@@ -58,7 +58,6 @@ namespace Code.Saving
         public SaveData RetrieveData()
         {
             var data = writeReadSaveData.LoadGame();   // Load the save game data
-            Debug.Log("2");
             return data;
         }
     }

@@ -764,6 +764,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1428551826}
+    - target: {fileID: 652335799697116003, guid: a0f8a75656e16448894479a66893ee25, type: 3}
+      propertyPath: m_VersionIndex
+      value: 172
+      objectReference: {fileID: 0}
     - target: {fileID: 4148787837936124175, guid: a0f8a75656e16448894479a66893ee25, type: 3}
       propertyPath: m_Name
       value: Spirit
@@ -1012,6 +1016,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1918953073}
+    - target: {fileID: 652335799697116003, guid: a0f8a75656e16448894479a66893ee25, type: 3}
+      propertyPath: m_VersionIndex
+      value: 172
+      objectReference: {fileID: 0}
     - target: {fileID: 4148787837936124175, guid: a0f8a75656e16448894479a66893ee25, type: 3}
       propertyPath: m_Name
       value: Spirit (1)

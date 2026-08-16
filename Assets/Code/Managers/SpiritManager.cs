@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Code;
 using Code.Managers;
@@ -28,6 +27,14 @@ public class SpiritManager : MonoBehaviour
         GameEventManager.instance.miscellaneousEvents.SpiritCollected += IncreaseSpiritCount;
     }
 
+    private void Update()
+    {
+        foreach (var spiritState in spiritStates)
+        {
+            Debug.Log($"Spirit {spiritState.Key}: {spiritState.Value}");
+        }
+    }
+
     public bool IsSpiritActive(string spiritId)
     {
         return spiritStates.ContainsKey(spiritId) && spiritStates[spiritId];
@@ -35,11 +42,22 @@ public class SpiritManager : MonoBehaviour
 
     public void AddSpirit(string spiritId)
     {
-        // spiritStates.TryAdd(gameObject, true);  // If a spirit is already in the hash map, the method will fail and the key value pair will not be affected.
-        if (spiritStates.TryAdd(spiritId, true))
+        foreach (var pair in spiritStates)
         {
-            spiritPrefabs.Add(spiritId);
+            Debug.Log(pair.Key);
         }
+        
+        if (spiritStates.ContainsKey(spiritId))
+        {
+            Debug.LogError($"Spirit {spiritId} is already in use!");
+            return;
+        }
+
+        spiritStates.TryAdd(spiritId, true);  // If a spirit is already in the hash map, the method will fail and the key value pair will not be affected.
+        // if (spiritStates.TryAdd(spiritId, true))
+        // {
+        //     spiritPrefabs.Add(spiritId);
+        // }
     }
 
     public void UpdateSpirit(string spiritId, bool newState)

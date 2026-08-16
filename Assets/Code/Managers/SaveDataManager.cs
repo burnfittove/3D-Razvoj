@@ -33,7 +33,6 @@ namespace Code.Managers
 
         private void LoadData(Scene arg0, LoadSceneMode arg1)
         {
-            Debug.Log($"{_data == null} | {_data}");
             if (_data == null) return;  // If there's no data, return
             var saveDataMapper = new SaveDataMapper();  // Create new object
             
@@ -71,9 +70,8 @@ namespace Code.Managers
             }
             
             _data = loadedData; // Cache save data
-            Debug.Log("3", this);
 
-            var player = GameObject.FindGameObjectWithTag("Player"); Debug.Log("4", this);
+            var player = GameObject.FindGameObjectWithTag("Player");
 
             // Only proceed if there is a player character
             if (!player)
@@ -83,8 +81,8 @@ namespace Code.Managers
             }
             
             // Load last scene on last location
-            checkpointSceneName = _data.lastScene; Debug.Log("5", this);
-            checkpointTarget = _data.checkpointTargetPos; Debug.Log("6", this);
+            checkpointSceneName = _data.lastScene;
+            checkpointTarget = _data.checkpointTargetPos;
             
             // Only proceed if there is SceneChangeManager
             if (!SceneChangeManager.instance)
@@ -93,8 +91,8 @@ namespace Code.Managers
                 return;
             }
             
-            SceneChangeManager.instance.AddObjectPosition(player, checkpointTarget); Debug.Log("7", this);
-            SceneChangeManager.instance.LoadScene(checkpointSceneName); Debug.Log("8", this);
+            SceneChangeManager.instance.AddObjectPosition(player, checkpointTarget);
+            SceneChangeManager.instance.LoadScene(checkpointSceneName);
         }
 
         public bool DoesFileExists()
