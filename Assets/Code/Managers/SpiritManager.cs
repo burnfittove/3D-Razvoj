@@ -14,7 +14,6 @@ public class SpiritManager : MonoBehaviour
     {
         if (instance && instance != this)
         {
-            Debug.Log("SpiritManager already exists, destroying!");
             Destroy(gameObject);
             return;
         }
@@ -61,5 +60,6 @@ public class SpiritManager : MonoBehaviour
         if (!SaveDataManager.Instance) return;  // If there is no SaveDataManager, return
 
         SaveDataManager.Instance.CreateCheckpoint();    // Create a checkpoint
+        GameEventManager.instance.textEvents.OnDisplayText($"{nameof(SaveDataManager)}: Checkpoint created!", 1);
     }
 }

@@ -11,4 +11,7 @@ public class MiscellaneousEvents
 
     public event Action<bool> SetPlayerCharacterActiveState;
     public void OnSetPlayerCharacterActiveState(bool active) => SetPlayerCharacterActiveState?.Invoke(active);
+
+    public event Action CheckForSpiritAmount;
+    public void OnCheckForSpiritAmount() => CheckForSpiritAmount?.Invoke();
 }

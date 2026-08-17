@@ -1,10 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Code.Managers;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonMethods : MonoBehaviour
 {
     public string nextScene;
-    
+    private List<Button> _buttons = new();
+
+    private void Start()
+    {
+        var buttonObjects = GameObject.FindGameObjectsWithTag("ButtonUI");
+        
+        foreach (var button in buttonObjects)
+        {
+            button.TryGetComponent(out Button buttonComponent);
+            if (!buttonComponent) continue;
+            _buttons.Add(buttonComponent);
+        }
+    }
+
     public void ChangeScene(Transform nextSceneLocation)
     {
         var playerCharacter = GameObject.FindGameObjectWithTag("Player");
@@ -20,12 +37,14 @@ public class ButtonMethods : MonoBehaviour
             return;
         }
         
+        DisableAllButtons();
         SceneChangeManager.instance.AddObjectPosition(playerCharacter, nextSceneLocation.position);
         SceneChangeManager.instance.LoadScene(nextScene);
     }
 
     public void Quit()
     {
+        DisableAllButtons();
         Application.Quit();
     }
 
@@ -37,6 +56,15 @@ public class ButtonMethods : MonoBehaviour
             return;
         }
         
+        DisableAllButtons();
         SaveDataManager.Instance.LoadCheckpoint();
+    }
+
+    private void DisableAllButtons()
+    {
+        foreach (var button in _buttons.Where(button => button))
+        {
+            button.interactable = false;
+        }
     }
 }

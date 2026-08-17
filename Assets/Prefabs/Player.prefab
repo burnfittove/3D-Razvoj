@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   _playerRenderer: {fileID: 7845801932022024532}
   movementSpeed: 2
-  runningSpeed: 35
+  runningSpeed: 3.5
   isDead: 0
   _spirits: 0
 --- !u!114 &7182292107909501714
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStamina
   maxStamina: 100
   staminaRegenerationRate: 10
-  staminaConsumptionRate: 0.2
+  staminaConsumptionRate: 12
   staminaRegenerationWaitTime: 2
   hasStamina: 0
 --- !u!114 &8428302385123348561

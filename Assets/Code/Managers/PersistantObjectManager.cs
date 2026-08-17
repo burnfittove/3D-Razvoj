@@ -11,7 +11,6 @@ public class PersistantObjectManager : MonoBehaviour
     {
         if (Instance && Instance != this)
         {
-            Debug.Log("PersistantObjectManager already exists, destroying!");
             Destroy(gameObject);
             return;
         }

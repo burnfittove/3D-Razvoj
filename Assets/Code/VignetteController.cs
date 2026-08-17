@@ -27,8 +27,8 @@ public class VignetteController : MonoBehaviour
     {
         if (instance && instance != this)
         {
-            Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
+            return;
         }
 
         instance = this;

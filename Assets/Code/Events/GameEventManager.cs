@@ -12,7 +12,6 @@ public class GameEventManager : MonoBehaviour
     {
         if (instance && instance != this)
         {
-            Debug.Log("GameEventManager already exists, destroying!");
             Destroy(gameObject);
             return;
         }

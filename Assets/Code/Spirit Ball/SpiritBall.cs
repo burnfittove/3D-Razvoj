@@ -41,8 +41,8 @@ public class SpiritBall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!GameEventManager.instance) return;
-        GameEventManager.instance.miscellaneousEvents.OnSpiritCollected();
         CollectSpirit();
+        GameEventManager.instance.miscellaneousEvents.OnSpiritCollected();
     }
 
     private void SetState(bool state)

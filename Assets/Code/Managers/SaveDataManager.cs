@@ -18,7 +18,6 @@ namespace Code.Managers
         {
             if (Instance && Instance != this)
             {
-                Debug.Log($"Instance of {typeof(SaveDataManager)} already exists, destroying object!");
                 Destroy(gameObject);
                 return;
             }
@@ -27,25 +26,25 @@ namespace Code.Managers
             DontDestroyOnLoad(gameObject);
         }
 
-        private void Start()
-        {
-            // SceneManager.sceneLoaded += LoadData;
-        }
-
-        private void LoadData(Scene arg0, LoadSceneMode arg1)
-        {
-            if (_data == null) return;  // If there's no data, return
-            var saveDataMapper = new SaveDataMapper();  // Create new object
-            
-            var result = saveDataMapper.LoadGame(_data);    // Attempt to load data
-            SpiritManager.instance.spiritStates.ToList().ForEach(kvp => Debug.Log(kvp.Key + " : " + kvp.Value));
-            if (result)                                 // If loading was successful...
-            {
-                _data = null;                           // erase the cached data...
-                return;                                 // and return.
-            }
-            Debug.LogError("Couldn't load save data!"); // Otherwise, warn of an error; something went wrong
-        }
+        // private void Start()
+        // {
+        //     // SceneManager.sceneLoaded += LoadData;
+        // }
+        //
+        // private void LoadData(Scene arg0, LoadSceneMode arg1)
+        // {
+        //     if (_data == null) return;  // If there's no data, return
+        //     var saveDataMapper = new SaveDataMapper();  // Create new object
+        //     
+        //     var result = saveDataMapper.LoadGame(_data);    // Attempt to load data
+        //     SpiritManager.instance.spiritStates.ToList().ForEach(kvp => Debug.Log(kvp.Key + " : " + kvp.Value));
+        //     if (result)                                 // If loading was successful...
+        //     {
+        //         _data = null;                           // erase the cached data...
+        //         return;                                 // and return.
+        //     }
+        //     Debug.LogError("Couldn't load save data!"); // Otherwise, warn of an error; something went wrong
+        // }
 
         public void CreateCheckpoint()
         {

@@ -53,14 +53,17 @@ public class PlayerHealthComponent : HealthComponent
 
     public override void TakeDamage(float damage)
     {
-        base.TakeDamage(damage);
-        VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, CurrentHealth));   // Calculate the current health state and pass it to the VignetteController
+        if (CurrentHealth <= 0) return;
+        CurrentHealth -= damage;
+        Die();
         _cooldownBuffer = regenerationCooldown;
+        VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, CurrentHealth));   // Calculate the current health state and pass it to the VignetteController
     }
 
     public override void Heal(float healAmount)
     {
-        base.Heal(healAmount);
+        if (CurrentHealth >= maxHealth) return;
+        CurrentHealth += healAmount;
         VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, CurrentHealth));   // Calculate the current health state and pass it to the VignetteController
     }
 
@@ -71,8 +74,8 @@ public class PlayerHealthComponent : HealthComponent
 
     protected override void Die()
     {
-        base.Die();
-        _animator?.SetTrigger("Death");
+        if (CurrentHealth > 0) return;
+        _animator?.SetTrigger("Dead");
         _playerController.isDead = true;
     }
 }

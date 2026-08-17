@@ -15,7 +15,6 @@ namespace Code.Managers
         {
             if (instance && instance != this)
             {
-                Debug.Log("SceneChangeManager already exists, destroying!");
                 Destroy(gameObject);
                 return;
             }

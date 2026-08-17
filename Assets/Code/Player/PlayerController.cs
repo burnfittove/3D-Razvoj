@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
     
     // ##### DEBUG #####
-    [SerializeField] private int _spirits;
     private Camera cam;
 
     private void Awake()
@@ -47,7 +46,6 @@ public class PlayerController : MonoBehaviour
         
         GameEventManager.instance.inputEvents.Move += Move;
         GameEventManager.instance.inputEvents.Run += Run;
-        GameEventManager.instance.miscellaneousEvents.SpiritCollected += CollectSpirit;
         GameEventManager.instance.miscellaneousEvents.SetPlayerCharacterActiveState += SetActiveState;
         GameEventManager.instance.sceneEvents.OnTransitionStarted += TransitionStarted;
         GameEventManager.instance.sceneEvents.OnTransitionCompleted += TransitionCompleted;
@@ -58,8 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetCursorState(Scene arg0, LoadSceneMode arg1)
     {
-        if (SceneManager.GetActiveScene().name == "MAIN MENU" || SceneManager.GetActiveScene().name == "GAME OVER") Cursor.lockState = CursorLockMode.None;
-        else Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = arg0.name is "MAIN MENU" or "GAME OVER" ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     private void SetActiveState(bool state)
@@ -70,19 +67,14 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // ##### DEBUG #####
-        foreach (var instanceSpiritState in SpiritManager.instance.spiritStates)
-        {
-            Debug.LogWarning(instanceSpiritState.ToString());
-        }
-        
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            _playerHealth.TakeDamage(50);
+            _playerHealth.TakeDamage(1);
         }
 
+        _playerRenderer.enabled = !_isHidden;    // Show or hide the player
+        
         if (_isHidden) return;
-
-        _playerRenderer.enabled = !isDead;    // Show or hide the player
         
         if (isDead)
         {
@@ -143,8 +135,6 @@ public class PlayerController : MonoBehaviour
         if (context.started) _animator?.SetBool("isRunning", true);
         if (context.canceled) _animator?.SetBool("isRunning", false);
     }
-
-    private void CollectSpirit() => _spirits++;
 
     private void UpdateCameraReference(Scene scene, LoadSceneMode mode) => cam = Camera.main;
 
