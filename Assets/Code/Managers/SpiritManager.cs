@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Code;
 using Code.Managers;
 using UnityEngine;
 
@@ -8,7 +7,9 @@ public class SpiritManager : MonoBehaviour
     public static SpiritManager instance;
     public Dictionary<string, bool> spiritStates = new();
     public int spiritCount;
-    public List<string> spiritPrefabs;
+    public int saveAfterNumberOfSpirits = 10;
+    public bool sendCheckpointMessage = true;
+    public string checkpointMessage = "Checkpoint!";
 
     private void Awake()
     {
@@ -40,10 +41,6 @@ public class SpiritManager : MonoBehaviour
         }
 
         spiritStates.TryAdd(spiritId, true);  // If a spirit is already in the hash map, the method will fail and the key value pair will not be affected.
-        // if (spiritStates.TryAdd(spiritId, true))
-        // {
-        //     spiritPrefabs.Add(spiritId);
-        // }
     }
 
     public void UpdateSpirit(string spiritId, bool newState)
@@ -56,10 +53,16 @@ public class SpiritManager : MonoBehaviour
     {
         spiritCount++;  // Increment
 
-        if (spiritCount % 5 != 0) return;   // If the number of collected spirits is not divisible by 5, return; a checkpoint is created every 5 spirits collected
+        TryForCheckpoint(); // Try to create a checkpoint
+    }
+    
+    private void TryForCheckpoint()
+    {
+        if (spiritCount % saveAfterNumberOfSpirits != 0) return;   // If the number of collected spirits is not divisible by saveAfterNumberOfSpirits, return;
+        // a checkpoint is created every saveAfterNumberOfSpirits spirits collected
         if (!SaveDataManager.Instance) return;  // If there is no SaveDataManager, return
 
         SaveDataManager.Instance.CreateCheckpoint();    // Create a checkpoint
-        GameEventManager.instance.textEvents.OnDisplayText($"{nameof(SaveDataManager)}: Checkpoint created!", 1);
+        if (sendCheckpointMessage) GameEventManager.instance.textEvents.OnDisplayText($"{checkpointMessage}", 1);
     }
 }
