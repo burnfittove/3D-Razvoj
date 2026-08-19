@@ -3,12 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransitionController : MonoBehaviour
 {
-    private Animator _animator;
-
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
+    public Animator _animator;
 
     private void Start()
     {
@@ -19,12 +14,17 @@ public class LevelTransitionController : MonoBehaviour
 
     private void FadeOut(Scene arg0, LoadSceneMode arg1)
     {
-        _animator.SetTrigger("FadeOut");
+        _animator?.SetTrigger("FadeOut");
     }
 
     private void TransitionStartedHandler()
     {
-        _animator.SetTrigger("FadeIn");
+        if (!_animator)
+        {
+            Debug.Log("No animator found");
+            return;
+        }
+        _animator?.SetTrigger("FadeIn");
     }
     
     public void FadeInCompleted()

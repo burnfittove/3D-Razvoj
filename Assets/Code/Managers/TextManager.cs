@@ -9,7 +9,6 @@ namespace Code.Managers
         private Animator _animator;
         private float _timer;
         private bool _reset;
-        public static TextManager instance;
 
         private void Awake()
         {

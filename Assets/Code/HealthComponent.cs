@@ -3,28 +3,28 @@ using UnityEngine;
 public abstract class HealthComponent : MonoBehaviour
 {
     public float maxHealth;
-    protected float _currentHealth;
+    public float CurrentHealth { get; set; }
 
     protected virtual void Awake()
     {
-        _currentHealth = maxHealth;
+        CurrentHealth = maxHealth;
     }
 
     public virtual void TakeDamage(float damage)
     {
-        if (_currentHealth <= 0) return;
-        _currentHealth -= damage;
+        if (CurrentHealth <= 0) return;
+        CurrentHealth -= damage;
         Die();
     }
     
     public virtual void Heal(float heal)
     {
-        if (_currentHealth >= maxHealth) return;
-        _currentHealth += heal;
+        if (CurrentHealth >= maxHealth) return;
+        CurrentHealth += heal;
     }
 
     protected virtual void Die()
     {
-        if (_currentHealth > 0) return;
+        if (CurrentHealth > 0) return;
     }
 }

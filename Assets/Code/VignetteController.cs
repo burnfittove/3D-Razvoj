@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class VignetteController : MonoBehaviour
 {
@@ -26,8 +27,8 @@ public class VignetteController : MonoBehaviour
     {
         if (instance && instance != this)
         {
-            Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
+            return;
         }
 
         instance = this;
@@ -61,5 +62,10 @@ public class VignetteController : MonoBehaviour
         };
 
         UpdateProfile();
+    }
+
+    public void SetVignetteState(bool state)
+    {
+        _volume.enabled = state;
     }
 }

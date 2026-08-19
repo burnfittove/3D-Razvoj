@@ -1,7 +1,4 @@
-using System;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public enum HealthState
 {
@@ -17,12 +14,13 @@ public class PlayerHealthComponent : HealthComponent
     public float regenerationCooldown;
     public float regenerationRate;
     private float _cooldownBuffer;
+    private PlayerController _playerController;
 
     protected override void Awake()
     {
         base.Awake();
-        
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
+        _playerController = GetComponent<PlayerController>();
         _cooldownBuffer = regenerationCooldown;
     }
 
@@ -42,7 +40,7 @@ public class PlayerHealthComponent : HealthComponent
 
         if (_cooldownBuffer > 0) return;
         Heal(regenerationRate * Time.deltaTime);
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
     }
 
     public HealthState CalculateHealthState(float maxHealth, float currentHealth)
@@ -55,20 +53,29 @@ public class PlayerHealthComponent : HealthComponent
 
     public override void TakeDamage(float damage)
     {
-        base.TakeDamage(damage);
-        VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, _currentHealth));   // Calculate the current health state and pass it to the VignetteController
+        if (CurrentHealth <= 0) return;
+        CurrentHealth -= damage;
+        Die();
         _cooldownBuffer = regenerationCooldown;
-        Debug.Log(_currentHealth);
+        VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, CurrentHealth));   // Calculate the current health state and pass it to the VignetteController
     }
 
     public override void Heal(float healAmount)
     {
-        base.Heal(healAmount);
-        VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, _currentHealth));   // Calculate the current health state and pass it to the VignetteController
+        if (CurrentHealth >= maxHealth) return;
+        CurrentHealth += healAmount;
+        VignetteController.instance.UpdatePostProcessingEffects(CalculateHealthState(maxHealth, CurrentHealth));   // Calculate the current health state and pass it to the VignetteController
     }
 
     private void HealOnSpiritCollected()
     {
         Heal(2);
+    }
+
+    protected override void Die()
+    {
+        if (CurrentHealth > 0) return;
+        _animator?.SetTrigger("Dead");
+        _playerController.isDead = true;
     }
 }

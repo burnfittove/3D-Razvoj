@@ -6,6 +6,7 @@ public class SpiritBall : MonoBehaviour
     private MeshRenderer _meshRenderer;
     private Collider _collider;
     private Light _light;
+    public string idd;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class SpiritBall : MonoBehaviour
 
     private void Start()
     {
+        idd = GetSpiritID();
         #region SpiritManager
 
         // Early return
@@ -33,13 +35,14 @@ public class SpiritBall : MonoBehaviour
         SetState(SpiritManager.instance.IsSpiritActive(GetSpiritID()));
 
         #endregion
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!GameEventManager.instance) return;
-        GameEventManager.instance.miscellaneousEvents.OnSpiritCollected();
         CollectSpirit();
+        GameEventManager.instance.miscellaneousEvents.OnSpiritCollected();
     }
 
     private void SetState(bool state)

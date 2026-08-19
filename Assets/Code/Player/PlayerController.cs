@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -10,15 +9,18 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private Animator _animator;
     private PlayerStamina _playerStamina;
+    private HealthComponent _playerHealth;
+    public SkinnedMeshRenderer _playerRenderer;
 
     private Vector2 _movementDirection;
     public float movementSpeed;
     public float runningSpeed;
     private bool isRunning;
     private bool _isEnabled;
+    private bool _isHidden;
+    public bool isDead;
     
     // ##### DEBUG #####
-    [SerializeField] private int _spirits;
     private Camera cam;
 
     private void Awake()
@@ -26,12 +28,13 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
         _playerStamina = GetComponent<PlayerStamina>();
+        _playerHealth = GetComponent<HealthComponent>();
     }
 
     private void Start()
     {
         // ##### DEBUG #####
-        Cursor.lockState = CursorLockMode.Locked;
+        SceneManager.sceneLoaded += SetCursorState;
         
         _isEnabled = true;
 
@@ -40,9 +43,10 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("No GameEventManager found in scene.");
             return;
         }
+        
         GameEventManager.instance.inputEvents.Move += Move;
         GameEventManager.instance.inputEvents.Run += Run;
-        GameEventManager.instance.miscellaneousEvents.SpiritCollected += CollectSpirit;
+        GameEventManager.instance.miscellaneousEvents.SetPlayerCharacterActiveState += SetActiveState;
         GameEventManager.instance.sceneEvents.OnTransitionStarted += TransitionStarted;
         GameEventManager.instance.sceneEvents.OnTransitionCompleted += TransitionCompleted;
         SceneManager.sceneLoaded += UpdateCameraReference;
@@ -50,8 +54,34 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
     }
 
+    private void SetCursorState(Scene arg0, LoadSceneMode arg1)
+    {
+        Cursor.lockState = arg0.name is "MAIN MENU" or "GAME OVER" ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    private void SetActiveState(bool state)
+    {
+        _isHidden = !state; // When someone says 'set active state to inactive (false)' this says 'it's hidden (true)'
+    }
+
     private void Update()
     {
+        // ##### DEBUG #####
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            _playerHealth.TakeDamage(1);
+        }
+
+        _playerRenderer.enabled = !_isHidden;    // Show or hide the player
+        
+        if (_isHidden) return;
+        
+        if (isDead)
+        {
+            if (_playerHealth.CurrentHealth <= 0) return;
+            isDead = false;
+        }
+        
         if (!_isEnabled) return;
         
         // If running, consume stamina
@@ -65,7 +95,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!_isEnabled) return;
+        if (!_isEnabled || isDead || _isHidden) return;
+        if (_isHidden) return;
         
         // Move
         UpdateMovement();
@@ -104,8 +135,6 @@ public class PlayerController : MonoBehaviour
         if (context.started) _animator?.SetBool("isRunning", true);
         if (context.canceled) _animator?.SetBool("isRunning", false);
     }
-
-    private void CollectSpirit() => _spirits++;
 
     private void UpdateCameraReference(Scene scene, LoadSceneMode mode) => cam = Camera.main;
 

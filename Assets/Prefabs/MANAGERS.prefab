@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86327cf3bda4d063aab861441de36d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpiritManager
+  spiritCount: 0
   spiritPrefabs: []
 --- !u!1 &1641279495621727325
 GameObject:
