@@ -33,9 +33,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        // ##### DEBUG #####
-        SceneManager.sceneLoaded += SetCursorState;
-        
         _isEnabled = true;
 
         if (!GameEventManager.instance)
@@ -52,11 +49,6 @@ public class PlayerController : MonoBehaviour
         SceneManager.sceneLoaded += UpdateCameraReference;
         
         cam = Camera.main;
-    }
-
-    private void SetCursorState(Scene arg0, LoadSceneMode arg1)
-    {
-        Cursor.lockState = arg0.name is "MAIN MENU" or "GAME OVER" ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     private void SetActiveState(bool state)
