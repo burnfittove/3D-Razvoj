@@ -58,12 +58,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // ##### DEBUG #####
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            _playerHealth.TakeDamage(1);
-        }
-
         _playerRenderer.enabled = !_isHidden;    // Show or hide the player
         
         if (_isHidden) return;
