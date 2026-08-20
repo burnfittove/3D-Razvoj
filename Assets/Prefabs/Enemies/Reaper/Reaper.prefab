@@ -51,7 +51,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 982769573155373037}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.25
+  m_Radius: 0.3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -86,6 +86,8 @@ MonoBehaviour:
   - rid: 6058482983637352683
   - rid: 6058482983637353262
   - rid: 6058482983637353263
+  - rid: 6058483258400178431
+  - rid: 6058483258400178432
   m_OriginalGraph: {fileID: 0}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -160,6 +162,22 @@ MonoBehaviour:
           m_Value1: 7215842947172231533
         Name: Reaper Controller
         m_Value: {fileID: 2454994114747813003}
+    - rid: 6058483258400178431
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8768392387028236171
+          m_Value1: 6432543557556174578
+        Name: Patrol Speed
+        m_Value: 2.5
+    - rid: 6058483258400178432
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10989823813226923755
+          m_Value1: 5620847823808482852
+        Name: Chase Speed
+        m_Value: 3.8
 --- !u!114 &3682231020374735102
 MonoBehaviour:
   m_ObjectHideFlags: 0

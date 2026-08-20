@@ -3458,6 +3458,10 @@ PrefabInstance:
       propertyPath: sceneName
       value: Third Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 2170509080693492705, guid: e885e6ea98037e0118fdea650baf35c0, type: 3}
+      propertyPath: nextRoomEnterLocation
+      value: 
+      objectReference: {fileID: 1565662760}
     - target: {fileID: 3331206357990024976, guid: e885e6ea98037e0118fdea650baf35c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39
@@ -5965,6 +5969,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 853379338387233084, guid: 083e6a9fa07b263728be304cf6bded90, type: 3}
   m_PrefabInstance: {fileID: 1534275423}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1565662759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1565662760}
+  m_Layer: 0
+  m_Name: third floor staircase 2 start pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1565662760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565662759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1567465768
 GameObject:
   m_ObjectHideFlags: 0
@@ -7580,3 +7615,4 @@ SceneRoots:
   - {fileID: 145673493}
   - {fileID: 582862906}
   - {fileID: 723118656}
+  - {fileID: 1565662760}
