@@ -334,6 +334,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 940148175}
     m_Modifications:
+    - target: {fileID: 3816660701844536803, guid: 69d7a6b23f63f7f25998460d097cb8d8, type: 3}
+      propertyPath: m_Name
+      value: Open
+      objectReference: {fileID: 0}
     - target: {fileID: 8113452787216287806, guid: 69d7a6b23f63f7f25998460d097cb8d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -373,10 +377,6 @@ PrefabInstance:
     - target: {fileID: 8113452787216287806, guid: 69d7a6b23f63f7f25998460d097cb8d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3816660701844536803, guid: 69d7a6b23f63f7f25998460d097cb8d8, type: 3}
-      propertyPath: m_Name
-      value: Open
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -493,10 +493,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 940148175}
     m_Modifications:
-    - target: {fileID: 7607120470210922568, guid: 468d7c618fbba6421ac4d39fc9d9a3e8, type: 3}
-      propertyPath: m_Name
-      value: Deadend
-      objectReference: {fileID: 0}
     - target: {fileID: 2900181429347551479, guid: 468d7c618fbba6421ac4d39fc9d9a3e8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -536,6 +532,10 @@ PrefabInstance:
     - target: {fileID: 2900181429347551479, guid: 468d7c618fbba6421ac4d39fc9d9a3e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607120470210922568, guid: 468d7c618fbba6421ac4d39fc9d9a3e8, type: 3}
+      propertyPath: m_Name
+      value: Deadend
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1062,7 +1062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7194904821715478813, guid: a0f8a75656e16448894479a66893ee25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7194904821715478813, guid: a0f8a75656e16448894479a66893ee25, type: 3}
       propertyPath: m_LocalPosition.z
