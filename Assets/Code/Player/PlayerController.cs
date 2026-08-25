@@ -33,9 +33,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        // ##### DEBUG #####
-        SceneManager.sceneLoaded += SetCursorState;
-        
         _isEnabled = true;
 
         if (!GameEventManager.instance)
@@ -54,11 +51,6 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
     }
 
-    private void SetCursorState(Scene arg0, LoadSceneMode arg1)
-    {
-        Cursor.lockState = arg0.name is "MAIN MENU" or "GAME OVER" ? CursorLockMode.None : CursorLockMode.Locked;
-    }
-
     private void SetActiveState(bool state)
     {
         _isHidden = !state; // When someone says 'set active state to inactive (false)' this says 'it's hidden (true)'
@@ -66,12 +58,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // ##### DEBUG #####
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            _playerHealth.TakeDamage(1);
-        }
-
         _playerRenderer.enabled = !_isHidden;    // Show or hide the player
         
         if (_isHidden) return;
