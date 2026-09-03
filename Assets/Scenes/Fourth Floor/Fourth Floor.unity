@@ -824,6 +824,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2262998028485773820, guid: cb68f8ce1963475bf8f1aa9f221e30fa, type: 3}
+      propertyPath: sceneName
+      value: floor-4-dead-cat
+      objectReference: {fileID: 0}
     - target: {fileID: 7772690772691246309, guid: cb68f8ce1963475bf8f1aa9f221e30fa, type: 3}
       propertyPath: m_Name
       value: Door (4)
@@ -3288,7 +3292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 138123813939972236, guid: e054f8479e7d3da76b4d8e5b9ad4abc8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 138123813939972236, guid: e054f8479e7d3da76b4d8e5b9ad4abc8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4403,7 +4407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2262998028485773820, guid: cb68f8ce1963475bf8f1aa9f221e30fa, type: 3}
       propertyPath: sceneName
-      value: floor-4-storage-1
+      value: floor-4-classroom-1
       objectReference: {fileID: 0}
     - target: {fileID: 7772690772691246309, guid: cb68f8ce1963475bf8f1aa9f221e30fa, type: 3}
       propertyPath: m_Name
