@@ -13,6 +13,7 @@ namespace Code.Managers
         private void Start()
         {
             SceneManager.sceneLoaded += SetCursorMode;
+            Debug.Log(gameObject.name + ": Cursor Loaded");
         }
 
         private void SetCursorMode(Scene scene, LoadSceneMode mode)

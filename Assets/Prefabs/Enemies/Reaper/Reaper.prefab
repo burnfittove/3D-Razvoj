@@ -171,7 +171,7 @@ MonoBehaviour:
           m_Value0: 8768392387028236171
           m_Value1: 6432543557556174578
         Name: Patrol Speed
-        m_Value: 2.5
+        m_Value: 2.2
     - rid: 6058483258400178432
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -179,7 +179,7 @@ MonoBehaviour:
           m_Value0: 10989823813226923755
           m_Value1: 5620847823808482852
         Name: Chase Speed
-        m_Value: 3.8
+        m_Value: 3.6
 --- !u!114 &3682231020374735102
 MonoBehaviour:
   m_ObjectHideFlags: 0

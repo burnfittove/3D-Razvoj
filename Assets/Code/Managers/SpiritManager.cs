@@ -8,6 +8,7 @@ public class SpiritManager : MonoBehaviour
     public Dictionary<string, bool> spiritStates = new();
     public int spiritCount;
     public int saveAfterNumberOfSpirits = 10;
+    public int maxNumberOfSpirits;
     public bool sendCheckpointMessage = true;
     public string checkpointMessage = "Checkpoint!";
 
@@ -36,7 +37,7 @@ public class SpiritManager : MonoBehaviour
     {
         if (spiritStates.ContainsKey(spiritId))
         {
-            Debug.LogError($"Spirit {spiritId} is already in use!");
+            Debug.LogWarningFormat($"Spirit {spiritId} is already in use!", this);
             return;
         }
 

@@ -8,8 +8,8 @@ public class SceneInit : MonoBehaviour
     
     private void Start()
     {
-        staminaCanvas = GameObject.FindGameObjectWithTag("StaminaUI").GetComponent<Canvas>();
-        playerRenderer = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).gameObject;
+        staminaCanvas = GameObject.FindGameObjectWithTag("StaminaUI")?.GetComponent<Canvas>();
+        playerRenderer = GameObject.FindGameObjectWithTag("Player")?.transform.GetChild(0).GetChild(0).gameObject;
 
         if (staminaCanvas) staminaCanvas.enabled = componentsEnabled;
         if (playerRenderer) playerRenderer.SetActive(componentsEnabled);
