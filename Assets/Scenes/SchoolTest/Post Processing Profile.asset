@@ -14,6 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.VolumeProfile
   components:
   - {fileID: 8741550232598269484}
+  - {fileID: 5588957839552627578}
+--- !u!114 &5588957839552627578
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.Vignette
+  active: 1
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    m_OverrideState: 0
+    m_Value: {x: 0.5, y: 0.5}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.5
+  smoothness:
+    m_OverrideState: 1
+    m_Value: 0.2
+  rounded:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &8741550232598269484
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -47,19 +76,19 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.45595855
-          value: 0.19125682
-          inSlope: 1.026141
-          outSlope: 1.026141
+          time: 0.44011143
+          value: 0.07692307
+          inSlope: 0.688949
+          outSlope: 0.688949
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.738342
-          value: 0.32240438
-          inSlope: 1.3422755
-          outSlope: 1.3422755
+          time: 0.729805
+          value: 0.21301776
+          inSlope: 0.61367536
+          outSlope: 0.61367536
           tangentMode: 0
           weightedMode: 0
           inWeight: 0

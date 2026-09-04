@@ -6,7 +6,7 @@ namespace Code.Managers
 {
     public class CursorManager : MonoBehaviour
     {
-        public string[] scenesWhereCursorIsShown = new []{"MAIN MENU", "GAME OVER", "Intro"};
+        public string[] scenesWhereCursorIsShown = {"MAIN MENU", "GAME OVER", "Intro"};
         
         private void Awake()
         {
