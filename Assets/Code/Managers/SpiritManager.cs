@@ -7,8 +7,9 @@ public class SpiritManager : MonoBehaviour
     public static SpiritManager instance;
     public Dictionary<string, bool> spiritStates = new();
     public int spiritCount;
-    public int saveAfterNumberOfSpirits = 10;
-    public int maxNumberOfSpirits;
+    public int saveAfterNumberOfSpirits = 8;
+    public int maxNumberOfSpirits = 37;
+    public bool AllSpiritsCollected => spiritCount >= maxNumberOfSpirits;
     public bool sendCheckpointMessage = true;
     public string checkpointMessage = "Checkpoint!";
 
@@ -54,16 +55,25 @@ public class SpiritManager : MonoBehaviour
     {
         spiritCount++;  // Increment
 
+        if (spiritCount >= maxNumberOfSpirits)                  // If all spirits are collected...
+        {
+            TryForCheckpoint(true);    // create a checkpoint and ignore 
+            if (GameEventManager.instance) GameEventManager.instance.textEvents.OnDisplayText($"I think that's everything... or, uhm, everyone. I should leave through the main door.", 7);
+            return;
+        }
+        
+        Debug.Log("Made it baby honey sugrabuns");
         TryForCheckpoint(); // Try to create a checkpoint
     }
     
-    private void TryForCheckpoint()
+    private void TryForCheckpoint(bool ignoreAutocompleteCheck = false)
     {
-        if (spiritCount % saveAfterNumberOfSpirits != 0) return;   // If the number of collected spirits is not divisible by saveAfterNumberOfSpirits, return;
+        if (!ignoreAutocompleteCheck)
+            if (spiritCount % saveAfterNumberOfSpirits != 0) return;   // If the number of collected spirits is not divisible by saveAfterNumberOfSpirits, return;
         // a checkpoint is created every saveAfterNumberOfSpirits spirits collected
         if (!SaveDataManager.Instance) return;  // If there is no SaveDataManager, return
 
         SaveDataManager.Instance.CreateCheckpoint();    // Create a checkpoint
-        if (sendCheckpointMessage) GameEventManager.instance.textEvents.OnDisplayText($"{checkpointMessage}", 1);
+        if (sendCheckpointMessage) GameEventManager.instance.textEvents.OnDisplayText($"{checkpointMessage}", .2f);
     }
 }

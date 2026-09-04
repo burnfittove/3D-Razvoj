@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8341905407728365531}
   - component: {fileID: 6286183859310735634}
+  - component: {fileID: -203880607560950331}
   - component: {fileID: 5125113392067580337}
+  - component: {fileID: 8276530379793802969}
   m_Layer: 0
   m_Name: Double Door
   m_TagString: Untagged
@@ -47,8 +49,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69842f35087ac92dba9a1cb6dc661e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisplayTextOnContact
-  text: It's locked.
-  time: 2
+  text: It's... locked?
+  time: 2.5
+--- !u!114 &-203880607560950331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6804109067411070537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5cf75af22244c48744957110e4c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TouchSceneChange
+  sceneName: 
+  nextRoomEnterLocation: {fileID: 0}
 --- !u!65 &5125113392067580337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -70,6 +86,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3, y: 2, z: 1.8}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &8276530379793802969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6804109067411070537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db590ab3511bebfddbd0ed13d9762efb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnlockMainDoor
 --- !u!1001 &1244351039631166733
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Code.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ namespace Code.Cutscene
         public TMP_Text textComponent;
 
         public CutsceneStep currentStep;
+
+        public string nextScene;
 
         private void Awake()
         {
@@ -42,8 +45,17 @@ namespace Code.Cutscene
 
         public void UpdateStep()
         {
-            currentStep = currentStep.nextStep; // Get the next step from the current step
-            UpdateImageAndText();
+            if (currentStep.nextStep)
+            {
+                currentStep = currentStep.nextStep; // Get the next step from the current step
+                UpdateImageAndText();
+                return;
+            }
+            
+            // Change scene
+            var sceneChangeManager = SceneChangeManager.instance;
+            if (!sceneChangeManager) return;
+            sceneChangeManager.LoadScene(nextScene);
         }
     }
 }

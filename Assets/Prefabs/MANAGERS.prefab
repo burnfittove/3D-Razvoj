@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpiritManager
   spiritCount: 0
-  saveAfterNumberOfSpirits: 10
+  saveAfterNumberOfSpirits: 8
+  maxNumberOfSpirits: 37
   sendCheckpointMessage: 1
-  checkpointMessage: Checkpoint!
+  checkpointMessage: saving...
 --- !u!1 &1641279495621727325
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38366cac32ec4d768522d8acd6b3f088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Code.Managers.CursorManager
+  scenesWhereCursorIsShown:
+  - MAIN MENU
+  - GAME OVER
+  - Intro
 --- !u!1 &5958089555799417326
 GameObject:
   m_ObjectHideFlags: 0
