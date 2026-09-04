@@ -1041,6 +1041,7 @@ MonoBehaviour:
   imageComponent: {fileID: 699909959}
   textComponent: {fileID: 681768836}
   currentStep: {fileID: 11400000, guid: 1d9a6802e6fbd6a5e8395c2ec0be801d, type: 2}
+  nextScene: OutsideTest
 --- !u!4 &1938792771
 Transform:
   m_ObjectHideFlags: 0

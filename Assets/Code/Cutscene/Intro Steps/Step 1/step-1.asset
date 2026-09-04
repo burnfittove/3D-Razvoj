@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eaa556774e0c30d790598c48d511ada, type: 3}
   m_Name: step-1
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneStep
-  stepImage: {fileID: 2800000, guid: ba3e829b00b446bbf8ee7ac578696b07, type: 3}
+  stepImage: {fileID: 2800000, guid: cce628a3e121c5bf595dec127457a61a, type: 3}
   stepText: There's a rumor going around on forums. It's about the abandoned school.
   nextStep: {fileID: 11400000, guid: b587bc8aa23738f2399b0a15038da731, type: 2}

@@ -80,6 +80,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fourth Floor/floor-4-dead-cat.unity
     guid: 700d0d797413b880bbc6dcd9e1f3959d
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: b505d36f82b799ed9a5095d8d9405989
   m_configObjects:
     com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: 5c30511375dbeecfcbf0b0af40e98840, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 85505f79c4ee9d2a8bc3b792fa7c3592, type: 2}

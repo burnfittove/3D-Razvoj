@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2eaa556774e0c30d790598c48d511ada, type: 3}
-  m_Name: step-2
+  m_Name: step-4
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneStep
-  stepImage: {fileID: 2800000, guid: cce628a3e121c5bf595dec127457a61a, type: 3}
-  stepText: People are saying they saw teachers moving around scythes. One person
-    said they saw a janitor dispose a bucket full of blood.
-  nextStep: {fileID: 11400000, guid: 1c3103a26cb4d217da4806c77c38f637, type: 2}
+  stepImage: {fileID: 2800000, guid: 90187f03297b5c74d92dc1ab85e87875, type: 3}
+  stepText: Maybe I can find some spirits there and put them in jars. That way, I
+    can fund my lamp business.
+  nextStep: {fileID: 11400000, guid: 59d2aca3a39e9084aa163010f774aa23, type: 2}

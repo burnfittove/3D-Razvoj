@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2eaa556774e0c30d790598c48d511ada, type: 3}
-  m_Name: step-2
+  m_Name: step-5
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneStep
-  stepImage: {fileID: 2800000, guid: cce628a3e121c5bf595dec127457a61a, type: 3}
-  stepText: People are saying they saw teachers moving around scythes. One person
-    said they saw a janitor dispose a bucket full of blood.
-  nextStep: {fileID: 11400000, guid: 1c3103a26cb4d217da4806c77c38f637, type: 2}
+  stepImage: {fileID: 2800000, guid: afdd761a3825e70f8b8c46b0007714c8, type: 3}
+  stepText: Everyone will HAVE to buy my lamps then! No more being disrespected!
+    I'm gonna make a fortune! A whole 20 bucks! That's a lot!
+  nextStep: {fileID: 11400000, guid: 8523b22ac0175c3f6bd950850a46a6ca, type: 2}
