@@ -11,7 +11,7 @@ public class SpiritManager : MonoBehaviour
     public int maxNumberOfSpirits = 37;
     public bool AllSpiritsCollected => spiritCount >= maxNumberOfSpirits;
     public bool sendCheckpointMessage = true;
-    public string checkpointMessage = "saving...";
+    public string checkpointMessage = "Checkpoint!";
 
     private void Awake()
     {
@@ -62,12 +62,14 @@ public class SpiritManager : MonoBehaviour
             return;
         }
         
+        Debug.Log("Made it baby honey sugrabuns");
         TryForCheckpoint(); // Try to create a checkpoint
     }
     
     private void TryForCheckpoint(bool ignoreAutocompleteCheck = false)
     {
-        if (spiritCount % saveAfterNumberOfSpirits != 0 && !ignoreAutocompleteCheck) return;   // If the number of collected spirits is not divisible by saveAfterNumberOfSpirits, return;
+        if (!ignoreAutocompleteCheck)
+            if (spiritCount % saveAfterNumberOfSpirits != 0) return;   // If the number of collected spirits is not divisible by saveAfterNumberOfSpirits, return;
         // a checkpoint is created every saveAfterNumberOfSpirits spirits collected
         if (!SaveDataManager.Instance) return;  // If there is no SaveDataManager, return
 
