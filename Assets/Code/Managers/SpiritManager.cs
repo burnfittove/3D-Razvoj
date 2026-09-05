@@ -62,7 +62,6 @@ public class SpiritManager : MonoBehaviour
             return;
         }
         
-        Debug.Log("Made it baby honey sugrabuns");
         TryForCheckpoint(); // Try to create a checkpoint
     }
     

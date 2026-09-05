@@ -2,29 +2,30 @@ using UnityEngine;
 
 public class UnlockMainDoor : MonoBehaviour
 {
-    private DisplayTextOnContact displayTextComponent;
-    private TouchSceneChange sceneChangeComponent;
+    public GameObject displayTextComponent;
+    public GameObject sceneChangeComponent;
 
-    private void Awake()
-    {
-        TryGetComponent(out displayTextComponent);
-        TryGetComponent(out sceneChangeComponent);
-    }
+    public bool isUnlocked;
 
     private void Start()
     {
         if (SpiritManager.instance.AllSpiritsCollected)
         {
-            SetDoorState(true);
+            SetDoorState(false);
             return;
         }
         
-        SetDoorState(false);
+        SetDoorState(true);
     }
-    
+
+    private void Update()
+    {
+        SetDoorState(isUnlocked);
+    }
+
     private void SetDoorState(bool isLocked)
     {
-        displayTextComponent.enabled = isLocked;
-        sceneChangeComponent.enabled = !isLocked;
+        displayTextComponent.SetActive(!isLocked);
+        sceneChangeComponent.SetActive(isLocked);
     }
 }
