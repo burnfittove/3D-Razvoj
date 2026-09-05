@@ -15,4 +15,4 @@ MonoBehaviour:
   stepImage: {fileID: 2800000, guid: 9070d73ce6ac995d5a9daae1b88a0cbd, type: 3}
   stepText: What a score! These little spirits are definately gonna make for some
     awesome lamps!
-  nextStep: {fileID: 0}
+  nextStep: {fileID: 11400000, guid: 046197b8365ba5c3ab0f00a4cb96f628, type: 2}
