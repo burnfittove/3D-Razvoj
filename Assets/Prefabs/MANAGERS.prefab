@@ -290,6 +290,7 @@ MonoBehaviour:
   - GAME OVER
   - Intro
   - Early End
+  - End
 --- !u!1 &5958089555799417326
 GameObject:
   m_ObjectHideFlags: 0
