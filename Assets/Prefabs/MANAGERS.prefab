@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpiritManager
   spiritCount: 0
   saveAfterNumberOfSpirits: 8
-  maxNumberOfSpirits: 37
+  maxNumberOfSpirits: 38
   sendCheckpointMessage: 1
   checkpointMessage: saving...
 --- !u!1 &951343163377771451

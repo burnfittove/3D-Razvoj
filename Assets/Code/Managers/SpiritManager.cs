@@ -7,8 +7,8 @@ public class SpiritManager : MonoBehaviour
     public static SpiritManager instance;
     public Dictionary<string, bool> spiritStates = new();
     public int spiritCount;
-    public int saveAfterNumberOfSpirits = 8;
-    public int maxNumberOfSpirits = 37;
+    public int saveAfterNumberOfSpirits;
+    public int maxNumberOfSpirits;
     public bool AllSpiritsCollected => spiritCount >= maxNumberOfSpirits;
     public bool sendCheckpointMessage = true;
     public string checkpointMessage = "Checkpoint!";

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eaa556774e0c30d790598c48d511ada, type: 3}
   m_Name: step-2
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneStep
-  stepImage: {fileID: 0}
+  stepImage: {fileID: 2800000, guid: 8e63e6b76c3e8cb08a85907167a1d7a5, type: 3}
   stepText: I guess I'll have to...
   nextStep: {fileID: 11400000, guid: 29fcfcd14a68e952c8cfb7f26ec90952, type: 2}
