@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eaa556774e0c30d790598c48d511ada, type: 3}
   m_Name: step-3
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneStep
-  stepImage: {fileID: 0}
+  stepImage: {fileID: 2800000, guid: 55a2a1c39afae3a2dbfced56c41409f5, type: 3}
   stepText: FIND A JOB!!!!
-  nextStep: {fileID: 0}
+  nextStep: {fileID: 11400000, guid: 80507cbfd34912460a8c450c3ecc574d, type: 2}

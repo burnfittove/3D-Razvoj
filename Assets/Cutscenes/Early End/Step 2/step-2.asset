@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneStep
   stepImage: {fileID: 0}
   stepText: I guess I'll have to...
-  nextStep: {fileID: 0}
+  nextStep: {fileID: 11400000, guid: 29fcfcd14a68e952c8cfb7f26ec90952, type: 2}

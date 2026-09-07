@@ -5,8 +5,6 @@ public class UnlockMainDoor : MonoBehaviour
     public GameObject displayTextComponent;
     public GameObject sceneChangeComponent;
 
-    public bool isUnlocked;
-
     private void Start()
     {
         if (SpiritManager.instance.AllSpiritsCollected)
@@ -16,11 +14,6 @@ public class UnlockMainDoor : MonoBehaviour
         }
         
         SetDoorState(true);
-    }
-
-    private void Update()
-    {
-        SetDoorState(isUnlocked);
     }
 
     private void SetDoorState(bool isLocked)

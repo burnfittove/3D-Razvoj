@@ -67,8 +67,15 @@ public class SpiritManager : MonoBehaviour
     
     private void TryForCheckpoint(bool ignoreAutocompleteCheck = false)
     {
-        if (!ignoreAutocompleteCheck)
-            if (spiritCount % saveAfterNumberOfSpirits != 0) return;   // If the number of collected spirits is not divisible by saveAfterNumberOfSpirits, return;
+        if (ignoreAutocompleteCheck)
+        {
+            if (!SaveDataManager.Instance) return;  // If there is no SaveDataManager, return
+
+            SaveDataManager.Instance.CreateCheckpoint();    // Create a checkpoint
+            return;
+        }
+            
+        if (spiritCount % saveAfterNumberOfSpirits != 0) return;   // If the number of collected spirits is not divisible by saveAfterNumberOfSpirits, return;
         // a checkpoint is created every saveAfterNumberOfSpirits spirits collected
         if (!SaveDataManager.Instance) return;  // If there is no SaveDataManager, return
 
