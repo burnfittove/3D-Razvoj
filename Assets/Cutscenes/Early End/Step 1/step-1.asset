@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eaa556774e0c30d790598c48d511ada, type: 3}
   m_Name: step-1
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneStep
-  stepImage: {fileID: 0}
+  stepImage: {fileID: 2800000, guid: 8e63e6b76c3e8cb08a85907167a1d7a5, type: 3}
   stepText: Maybe... I can find some other way to make money.
-  nextStep: {fileID: 0}
+  nextStep: {fileID: 11400000, guid: 1d913ae96ce500b07ba13beb1cf5eb02, type: 2}

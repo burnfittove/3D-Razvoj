@@ -3040,6 +3040,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Double Door
       objectReference: {fileID: 0}
+    - target: {fileID: 8276530379793802969, guid: 323ae46c99d67b07da99f6f6fbc13da3, type: 3}
+      propertyPath: endGame
+      value: 
+      objectReference: {fileID: 1719650581}
+    - target: {fileID: 8276530379793802969, guid: 323ae46c99d67b07da99f6f6fbc13da3, type: 3}
+      propertyPath: lockedText
+      value: 
+      objectReference: {fileID: 2092310145}
     - target: {fileID: 8341905407728365531, guid: 323ae46c99d67b07da99f6f6fbc13da3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5
@@ -3399,6 +3407,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8113452787216287806, guid: 69d7a6b23f63f7f25998460d097cb8d8, type: 3}
   m_PrefabInstance: {fileID: 1667829048}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1719650581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5101562027044602584, guid: 323ae46c99d67b07da99f6f6fbc13da3, type: 3}
+  m_PrefabInstance: {fileID: 1503020357}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1766771051
 PrefabInstance:
@@ -3966,6 +3979,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3331206357990024976, guid: 06686381006df9d99bc48a7b47584abb, type: 3}
   m_PrefabInstance: {fileID: 2054696541}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2092310145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4466484052749055867, guid: 323ae46c99d67b07da99f6f6fbc13da3, type: 3}
+  m_PrefabInstance: {fileID: 1503020357}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2144638872
 PrefabInstance:
