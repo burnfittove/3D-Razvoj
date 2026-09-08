@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 8199887413343430645}
   - component: {fileID: 2764091415387019410}
   - component: {fileID: 8353073104427951548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,6 +326,14 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a0802236a53c59e6a99baf45ef1f632f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: a0802236a53c59e6a99baf45ef1f632f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: a0802236a53c59e6a99baf45ef1f632f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a0802236a53c59e6a99baf45ef1f632f, type: 3}
       propertyPath: m_Name
