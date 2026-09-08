@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 280381289841212247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01209, y: 0, z: -3.02846}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -61,13 +61,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557473030043221151}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18224813, y: 0.00000008474407, z: -0.000000015707512, w: 0.9832526}
-  m_LocalPosition: {x: 1.11058, y: 0.9737789, z: 1.1886837}
+  m_LocalRotation: {x: -0.17203155, y: -0.40776843, z: -0.078529015, w: 0.89328796}
+  m_LocalPosition: {x: -17, y: 1, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 480892078707979423}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -21.801, y: 0, z: 0}
 --- !u!20 &2575943308295428326
 Camera:
   m_ObjectHideFlags: 0
@@ -217,8 +217,9 @@ GameObject:
   - component: {fileID: 3792395115922566303}
   - component: {fileID: 8909226904125748600}
   - component: {fileID: 3855376019076761451}
-  - component: {fileID: 2046689583582014735}
   - component: {fileID: 7814889416254893297}
+  - component: {fileID: 5463175671874451175}
+  - component: {fileID: 7618015509847551989}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: MainCamera
@@ -445,36 +446,6 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 1
---- !u!114 &2046689583582014735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7284691224098902876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDecollider
-  CameraRadius: 0.4
-  Decollision:
-    Enabled: 0
-    ObstacleLayers:
-      serializedVersion: 2
-      m_Bits: 1
-    UseFollowTarget:
-      Enabled: 1
-      YOffset: 0
-    Damping: 0.5
-    SmoothingTime: 0
-  TerrainResolution:
-    Enabled: 1
-    TerrainLayers:
-      serializedVersion: 2
-      m_Bits: 0
-    MaximumRaycast: 1
-    Damping: 0.5
 --- !u!114 &7814889416254893297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,3 +458,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cad101d5b2eb1c2b90d8fd8cbc532e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFindTarget
+--- !u!114 &5463175671874451175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284691224098902876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDeoccluder
+  CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 256
+  IgnoreTag: 
+  TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  MinimumDistanceFromTarget: 0.3
+  AvoidObstacles:
+    Enabled: 1
+    DistanceLimit: 0
+    MinimumOcclusionTime: 0
+    CameraRadius: 0.4
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Strategy: 0
+    MaximumEffort: 4
+    SmoothingTime: 0
+    Damping: 0.4
+    DampingWhenOccluded: 0.2
+  ShotQualityEvaluation:
+    Enabled: 1
+    OptimalDistance: 10
+    NearLimit: 5
+    FarLimit: 30
+    MaxQualityBoost: 0.2
+--- !u!114 &7618015509847551989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284691224098902876}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDecollider
+  CameraRadius: 0.4
+  Decollision:
+    Enabled: 0
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Damping: 0.5
+    SmoothingTime: 0
+  TerrainResolution:
+    Enabled: 1
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    MaximumRaycast: 10
+    Damping: 0.5

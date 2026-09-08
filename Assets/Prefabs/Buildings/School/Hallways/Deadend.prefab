@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2900181429347551479}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Deadend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 49cb5666c716bb29fa73e385ee4ea562, type: 3}
       propertyPath: m_Name
       value: h-de
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 49cb5666c716bb29fa73e385ee4ea562, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
