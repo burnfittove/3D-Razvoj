@@ -531,7 +531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480892078707979423, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.11058
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 480892078707979423, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalPosition.y
@@ -539,7 +539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480892078707979423, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.72527
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 480892078707979423, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalRotation.w
@@ -575,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 1778861115}
     - target: {fileID: 6480544488347684511, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.11058
+      value: -0.00000022175541
       objectReference: {fileID: 0}
     - target: {fileID: 6480544488347684511, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalPosition.y
@@ -583,27 +583,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6480544488347684511, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1886837
+      value: 2.5365863
       objectReference: {fileID: 0}
     - target: {fileID: 6480544488347684511, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.98325264
+      value: -0.000000087775085
       objectReference: {fileID: 0}
     - target: {fileID: 6480544488347684511, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18224813
+      value: -0.000000016839017
       objectReference: {fileID: 0}
     - target: {fileID: 6480544488347684511, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000008601997
+      value: 0.9832526
       objectReference: {fileID: 0}
     - target: {fileID: 6480544488347684511, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000022591172
+      value: -0.1822483
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383987022660697077, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
+      propertyPath: HorizontalAxis.Value
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 7743182632964754089, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.11058
+      value: -0.00000022175541
       objectReference: {fileID: 0}
     - target: {fileID: 7743182632964754089, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalPosition.y
@@ -611,23 +615,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7743182632964754089, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1886837
+      value: 2.5365863
       objectReference: {fileID: 0}
     - target: {fileID: 7743182632964754089, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9832526
+      value: -0.000000087665725
       objectReference: {fileID: 0}
     - target: {fileID: 7743182632964754089, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18224813
+      value: -0.000000016249057
       objectReference: {fileID: 0}
     - target: {fileID: 7743182632964754089, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000008474407
+      value: 0.9832526
       objectReference: {fileID: 0}
     - target: {fileID: 7743182632964754089, guid: d1f56c17e9ad7606e8ba73e385f0c540, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000015707512
+      value: -0.18224828
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
