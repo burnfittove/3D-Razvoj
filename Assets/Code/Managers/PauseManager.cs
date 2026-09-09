@@ -29,6 +29,7 @@ namespace Code.Managers
         private void Start()
         {
             GameEventManager.instance.inputEvents.Pause += PauseGame;
+            GameEventManager.instance.sceneEvents.OnSceneLoad += DisablePause;
             SceneManager.sceneLoaded += CheckIfCanPause;
             
             pauseCanvas.enabled = false;
@@ -39,6 +40,11 @@ namespace Code.Managers
             }
             
             canPause = scenesWhereNoPause.All(scene => scene != SceneManager.GetActiveScene().name);
+        }
+
+        private void DisablePause(string scene)
+        {
+            canPause = false;
         }
 
         private void CheckIfCanPause(Scene currentScene, LoadSceneMode mode)
