@@ -70,13 +70,13 @@ MonoBehaviour:
     cursus nisi. Donec pulvinar euismod. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 46e098696abc72b18a11294349fa2387, type: 2}
-  m_sharedMaterial: {fileID: 7285410546315596455, guid: 46e098696abc72b18a11294349fa2387, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 0089204684445e2e59be07d6bc259d7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

@@ -8,6 +8,7 @@ public class ButtonMethods : MonoBehaviour
 {
     public string nextScene;
     private List<Button> _buttons = new();
+    public bool disableButtons = true;
 
     private void Start()
     {
@@ -61,9 +62,23 @@ public class ButtonMethods : MonoBehaviour
 
     private void DisableAllButtons()
     {
+        if (!disableButtons) return;
         foreach (var button in _buttons.Where(button => button))
         {
             button.interactable = false;
         }
+    }
+
+    public void Continue()
+    {
+        Time.timeScale = 1;
+        PauseManager.Instance.SetState(false);
+    }
+    
+    public void QuitGame()
+    {
+        Time.timeScale = 1;
+        PauseManager.Instance.SetState(false);
+        SceneChangeManager.instance.LoadScene(nextScene);
     }
 }

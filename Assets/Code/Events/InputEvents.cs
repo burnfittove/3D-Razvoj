@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputEvents
@@ -14,5 +13,11 @@ public class InputEvents
     public void OnRun(InputAction.CallbackContext context)
     {
         Run?.Invoke(context);
+    }
+    
+    public event Action<InputAction.CallbackContext> Pause;
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        Pause?.Invoke(context);
     }
 }
