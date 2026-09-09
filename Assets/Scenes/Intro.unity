@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 1272292854}
   m_Layer: 5
   m_Name: Next
-  m_TagString: Untagged
+  m_TagString: ButtonUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1111,6 +1111,7 @@ MonoBehaviour:
   textComponent: {fileID: 681768836}
   currentStep: {fileID: 11400000, guid: 1d9a6802e6fbd6a5e8395c2ec0be801d, type: 2}
   nextScene: OutsideTest
+  button: {fileID: 1272292851}
 --- !u!4 &1938792771
 Transform:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ namespace Code.Cutscene
 
         public string nextScene;
 
+        public Button button;
+
         private void Awake()
         {
             if (instance && instance != this)
@@ -52,10 +54,11 @@ namespace Code.Cutscene
                 return;
             }
             
-            // Change scene
+            // Change scene and disable the 'Next' button
             var sceneChangeManager = SceneChangeManager.instance;
             if (!sceneChangeManager) return;
             sceneChangeManager.LoadScene(nextScene);
+            button.interactable = false;
         }
     }
 }

@@ -12,4 +12,9 @@ public class InputManager : MonoBehaviour
     {
         GameEventManager.instance.inputEvents.OnRun(context);
     }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        GameEventManager.instance.inputEvents.OnPause(context);
+    }
 }
