@@ -55,6 +55,12 @@ public class SpiritManager : MonoBehaviour
     {
         spiritCount++;  // Increment
 
+        if (spiritCount == 1)
+        {
+            TryForCheckpoint(true); // Try to create a checkpoint
+            return;
+        }
+
         if (spiritCount >= maxNumberOfSpirits)                  // If all spirits are collected...
         {
             TryForCheckpoint(true);    // create a checkpoint and ignore 
@@ -65,9 +71,9 @@ public class SpiritManager : MonoBehaviour
         TryForCheckpoint(); // Try to create a checkpoint
     }
     
-    private void TryForCheckpoint(bool ignoreAutocompleteCheck = false)
+    private void TryForCheckpoint(bool ignoreAutomaticCheck = false)
     {
-        if (ignoreAutocompleteCheck)
+        if (ignoreAutomaticCheck)
         {
             if (!SaveDataManager.Instance) return;  // If there is no SaveDataManager, return
 
