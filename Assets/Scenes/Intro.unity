@@ -298,7 +298,7 @@ MonoBehaviour:
     hac habitasse platea. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 46e098696abc72b18a11294349fa2387, type: 2}
-  m_sharedMaterial: {fileID: 7285410546315596455, guid: 46e098696abc72b18a11294349fa2387, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 0089204684445e2e59be07d6bc259d7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -582,6 +582,10 @@ PrefabInstance:
     - target: {fileID: 3104063394554425476, guid: 2b19414d98b482fbaa2ff2958df54fb2, type: 3}
       propertyPath: m_Name
       value: '### PERSISTANT OBJECTS ###'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104063394554425476, guid: 2b19414d98b482fbaa2ff2958df54fb2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -870,7 +874,7 @@ MonoBehaviour:
   m_text: Next
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 46e098696abc72b18a11294349fa2387, type: 2}
-  m_sharedMaterial: {fileID: 7285410546315596455, guid: 46e098696abc72b18a11294349fa2387, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 0089204684445e2e59be07d6bc259d7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
