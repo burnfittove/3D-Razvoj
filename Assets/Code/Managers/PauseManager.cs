@@ -12,6 +12,7 @@ namespace Code.Managers
         public bool canPause;
         public Canvas pauseCanvas;
         public Button[] buttons;
+        private bool isPaused;
         
         public string[] scenesWhereNoPause = {"MAIN MENU", "GAME OVER", "Intro", "Early End", "End"};
         
@@ -60,14 +61,17 @@ namespace Code.Managers
         {
             if (!canPause) return;
             if (!ctx.started) return;
-            SetState(true);
+            
+            isPaused = !isPaused;
+            
+            SetState(isPaused);
         }
 
         public void SetState(bool state)
         {
-            Time.timeScale = state ? 0 : 1;
             Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
             pauseCanvas.enabled = state;
+            Time.timeScale = state ? 0 : 1;
         }
     }
 }
